@@ -3,5 +3,5 @@
 # Licensed under Simplified BSD License (see LICENSE)
 
 # dummy program that runs for 20 seconds and dies
-echo 'test' >> $VOLATILE_DIR/supervisor/started_1
+echo 'test' >> /supervisor/started_1
 sleep 20
