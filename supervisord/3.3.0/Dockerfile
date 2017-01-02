@@ -7,5 +7,7 @@ COPY program_2.sh /
 
 RUN pip install supervisor==3.3.0 &&chmod a+x /program_*.sh && mkdir supervisor
 
+EXPOSE 19001
+
 ENTRYPOINT ["supervisord"]
 CMD ["-c", "/supervisord.conf"]
