@@ -5,7 +5,7 @@ RUN apt-get update -y \
     apt-transport-https \
     curl
 
-ADD varnish_4.1.4.pref /etc/apt/preferences.d/
+ADD varnish_4.1.7.pref /etc/apt/preferences.d/
 RUN curl https://repo.varnish-cache.org/GPG-key.txt | apt-key add -
 RUN echo "deb https://repo.varnish-cache.org/debian/ jessie varnish-4.1"  | tee -a /etc/apt/sources.list.d/varnish-cache.list
 RUN apt-get update \
