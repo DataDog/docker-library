@@ -16,3 +16,4 @@ Currently available tags:
  * [`kyototycoon_0_9_56`](https://github.com/DataDog/docker-library/tree/master/kyototycoon/0.9.56): Kyototycoon v.0.9.56
  * [`varnish_5_0_0`](https://github.com/DataDog/docker-library/tree/master/varnish/5.0.0): Varnish v.5.0.0
  * [`varnish_4_1_7`](https://github.com/DataDog/docker-library/tree/master/varnish/4.1.7): Varnish v.4.1.7
+ * [`ddtrace_csharp_0_1_0`](https://github.com/DataDog/docker-library/tree/master/dd-trace-csharp/0.1.0): C# test runner v.0.1.0
