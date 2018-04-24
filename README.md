@@ -21,3 +21,4 @@ Currently available tags:
 * [`varnish_4_1_7`](https://github.com/DataDog/docker-library/tree/master/varnish/4.1.7): Varnish v.4.1.7
 * [`ddtrace_csharp_0_1_0`](https://github.com/DataDog/docker-library/tree/master/dd-trace-csharp/0.1.0): C# test runner v.0.1.0
 * [`memcached_SASL`](https://github.com/DataDog/docker-library/tree/master/memcached)
+* [`nginx-vts`](https://github.com/DataDog/docker-library/tree/master/nginx-vts)
