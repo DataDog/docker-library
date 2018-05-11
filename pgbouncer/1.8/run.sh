@@ -10,6 +10,7 @@ PG_ENV_POSTGRESQL_MAX_CLIENT_CONN=${PG_ENV_POSTGRESQL_MAX_CLIENT_CONN:-}
 PG_ENV_POSTGRESQL_DEFAULT_POOL_SIZE=${PG_ENV_POSTGRESQL_DEFAULT_POOL_SIZE:-}
 PG_ENV_POSTGRESQL_SERVER_IDLE_TIMEOUT=${PG_ENV_POSTGRESQL_SERVER_IDLE_TIMEOUT:-}
 PG_ENV_POSTGRESQL_POOL_MODE=${PG_ENV_POSTGRESQL_POOL_MODE:-}
+PG_ENV_POSTGRESQL_ADMIN_USERS=${PG_ENV_POSTGRESQL_ADMIN_USERS:-}
 
 if [ ! -f /etc/pgbouncer/pgbconf.ini ]
 then
@@ -22,8 +23,9 @@ pidfile = /var/run/postgresql/pgbouncer.pid
 listen_addr = 0.0.0.0
 listen_port = 6432
 unix_socket_dir = /var/run/postgresql
-auth_type = trust
+auth_type = md5
 auth_file = /etc/pgbouncer/userlist.txt
+admin_users = ${PG_ENV_POSTGRESQL_ADMIN_USERS}
 pool_mode = ${PG_ENV_POSTGRESQL_POOL_MODE}
 server_reset_query = DISCARD ALL
 max_client_conn = ${PG_ENV_POSTGRESQL_MAX_CLIENT_CONN}
