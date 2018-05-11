@@ -22,3 +22,5 @@ Currently available tags:
 * [`ddtrace_csharp_0_1_0`](https://github.com/DataDog/docker-library/tree/master/dd-trace-csharp/0.1.0): C# test runner v.0.1.0
 * [`memcached_SASL`](https://github.com/DataDog/docker-library/tree/master/memcached)
 * [`nginx-vts`](https://github.com/DataDog/docker-library/tree/master/nginx-vts)
+* [`pgbouncer_1_7](https://github.com/DataDog/docker-library/tree/master/pgbouncer/1.7)
+* [`pgbouncer_1_8](https://github.com/DataDog/docker-library/tree/master/pgbouncer/1.7)
