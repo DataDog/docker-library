@@ -20,6 +20,12 @@ Currently available tags:
 * [`varnish_5_0_0`](https://github.com/DataDog/docker-library/tree/master/varnish/5.0.0): Varnish v.5.0.0
 * [`varnish_4_1_7`](https://github.com/DataDog/docker-library/tree/master/varnish/4.1.7): Varnish v.4.1.7
 * [`ddtrace_csharp_0_1_0`](https://github.com/DataDog/docker-library/tree/master/dd-trace-csharp/0.1.0): C# test runner v.0.1.0
+* [`ddtrace_rb_1_9_3`](https://github.com/DataDog/docker-library/tree/master/dd-trace-rb/1.9.3): Test runner for Ruby version 1.9.3
+* [`ddtrace_rb_2_0_0`](https://github.com/DataDog/docker-library/tree/master/dd-trace-rb/2.0.0): Test runner for Ruby version 2.0.0
+* [`ddtrace_rb_2_1_10`](https://github.com/DataDog/docker-library/tree/master/dd-trace-rb/2.1.10): Test runner for Ruby version 2.1.10
+* [`ddtrace_rb_2_2_10`](https://github.com/DataDog/docker-library/tree/master/dd-trace-rb/2.2.10): Test runner for Ruby version 2.2.10
+* [`ddtrace_rb_2_3_7`](https://github.com/DataDog/docker-library/tree/master/dd-trace-rb/2.3.7): Test runner for Ruby version 2.3.7
+* [`ddtrace_rb_2_4_4`](https://github.com/DataDog/docker-library/tree/master/dd-trace-rb/2.4.4): Test runner for Ruby version 2.4.4
 * [`memcached_SASL`](https://github.com/DataDog/docker-library/tree/master/memcached)
 * [`nginx-vts`](https://github.com/DataDog/docker-library/tree/master/nginx-vts)
 * [`pgbouncer_1_7`](https://github.com/DataDog/docker-library/tree/master/pgbouncer/1.7)
