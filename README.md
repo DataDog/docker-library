@@ -19,6 +19,7 @@ Currently available tags:
 * [`kyototycoon_0_9_56`](https://github.com/DataDog/docker-library/tree/master/kyototycoon/0.9.56): Kyototycoon v.0.9.56
 * [`varnish_5_0_0`](https://github.com/DataDog/docker-library/tree/master/varnish/5.0.0): Varnish v.5.0.0
 * [`varnish_4_1_7`](https://github.com/DataDog/docker-library/tree/master/varnish/4.1.7): Varnish v.4.1.7
+* [`dd-opentracing-cpp_0_1_0`](https://github.com/DataDog/docker-library/tree/master/dd-opentracing-cpp/0.1.0): Base image for CircleCI build of C++ OpenTracing integration
 * [`ddtrace_csharp_0_1_0`](https://github.com/DataDog/docker-library/tree/master/dd-trace-csharp/0.1.0): C# test runner v.0.1.0
 * [`ddtrace_rb_1_9_3`](https://github.com/DataDog/docker-library/tree/master/dd-trace-rb/1.9.3): Test runner for Ruby version 1.9.3
 * [`ddtrace_rb_2_0_0`](https://github.com/DataDog/docker-library/tree/master/dd-trace-rb/2.0.0): Test runner for Ruby version 2.0.0
