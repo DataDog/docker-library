@@ -15,3 +15,5 @@ RUN apt-get update && \
     # Packaging tools
     ruby ruby-dev lsb-release
 
+RUN gem install fpm
+
