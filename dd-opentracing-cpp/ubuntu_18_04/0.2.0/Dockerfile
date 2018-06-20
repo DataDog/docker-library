@@ -14,6 +14,14 @@ RUN apt-get update && \
     libxml2-dev libxslt-dev libgd-dev libgeoip-dev \
     # Packaging tools
     ruby ruby-dev lsb-release
+    # Integration test tools
+    jq openjdk-8-jre golang
 
+# For building packages (apt, apk, rpm...)
 RUN gem install fpm
+
+# Wiremock for running intergration tests
+ADD http://repo1.maven.org/maven2/com/github/tomakehurst/wiremock-standalone/2.18.0/wiremock-standalone-2.18.0.jar wiremock-standalone-2.18.0.jar
+RUN printf "#!/bin/bash\nset -x\njava -jar $(pwd)/wiremock-standalone-2.18.0.jar \"\$@\"\n" > /usr/local/bin/wiremock && \
+  chmod a+x /usr/local/bin/wiremock
 
