@@ -9,5 +9,5 @@ RUN apt-get update && \
   # Build tools
   build-essential cmake \
   # Nginx requirements
-  libpcre3-dev zlib1g-dev
+  libpcre3-dev
 
