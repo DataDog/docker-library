@@ -32,3 +32,4 @@ Currently available tags:
 * [`nginx-vts`](https://github.com/DataDog/docker-library/tree/master/nginx-vts)
 * [`pgbouncer_1_7`](https://github.com/DataDog/docker-library/tree/master/pgbouncer/1.7)
 * [`pgbouncer_1_8`](https://github.com/DataDog/docker-library/tree/master/pgbouncer/1.7)
+* [`snmp`](https://github.com/DataDog/docker-library/tree/master/snmp): Image for SNMP testing with [snmpsim](http://snmplabs.com/snmpsim/quickstart.html)
