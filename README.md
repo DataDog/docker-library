@@ -28,7 +28,7 @@ Currently available tags:
 * [`ddtrace_rb_2_2_10`](https://github.com/DataDog/docker-library/tree/master/dd-trace-rb/2.2.10): Test runner for Ruby version 2.2.10
 * [`ddtrace_rb_2_3_7`](https://github.com/DataDog/docker-library/tree/master/dd-trace-rb/2.3.7): Test runner for Ruby version 2.3.7
 * [`ddtrace_rb_2_4_4`](https://github.com/DataDog/docker-library/tree/master/dd-trace-rb/2.4.4): Test runner for Ruby version 2.4.4
-* [`ddtrace_py`](https://github.com/DataDog/docker-library/tree/master/dd-trace-pi): Test runner for Python
+* [`ddtrace_py`](https://github.com/DataDog/docker-library/tree/master/dd-trace-py): Test runner for Python
 * [`memcached_SASL`](https://github.com/DataDog/docker-library/tree/master/memcached)
 * [`nginx-vts`](https://github.com/DataDog/docker-library/tree/master/nginx-vts)
 * [`pgbouncer_1_7`](https://github.com/DataDog/docker-library/tree/master/pgbouncer/1.7)
