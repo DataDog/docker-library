@@ -7,7 +7,7 @@ RUN apt-get update && \
   # Source tools
   clang-format-5.0 \
   # Build tools
-  build-essential cmake \
+  build-essential cmake clang-5.0\
   # Nginx requirements
   libpcre3-dev
 
