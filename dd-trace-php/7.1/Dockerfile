@@ -5,6 +5,7 @@ USER root
 RUN apt-get update \
     && apt-get install -y \
         libmemcached-dev \
+        valgrind \
     && pecl install redis \
     && docker-php-ext-enable redis \
     && pecl install memcached \
