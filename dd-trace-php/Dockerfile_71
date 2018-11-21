@@ -1,0 +1,16 @@
+FROM circleci/php:7.1
+
+USER root
+
+COPY install-php7-common-dependencies.sh /tmp/install-php7-common-dependencies.sh
+
+RUN apt-get update
+RUN sh /tmp/install-php7-common-dependencies.sh
+RUN apt-get install -y libmcrypt-dev
+RUN pecl install mcrypt-1.0.0
+RUN docker-php-ext-enable mcrypt
+RUN docker-php-ext-install pcntl 
+RUN docker-php-ext-enable pcntl
+RUN rm -rf /var/lib/apt/lists/*
+
+USER circleci
