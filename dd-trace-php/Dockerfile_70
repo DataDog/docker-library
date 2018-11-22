@@ -6,7 +6,8 @@ COPY install-php7-common-dependencies.sh /tmp/install-php7-common-dependencies.s
 
 RUN apt-get update \
     && sh /tmp/install-php7-common-dependencies.sh \
-    && apt-get install mcrypt \
+    && apt-get install libmcrypt-dev \
+    && docker-php-ext-install mcrypt \
     && rm -rf /var/lib/apt/lists/*
 
 USER circleci
