@@ -4,6 +4,7 @@ USER root
 
 RUN apt-get update \
     && apt-get install -y \
+        libssl-dev \
         libmemcached-dev \
         valgrind \
         mysql-client \
@@ -12,6 +13,8 @@ RUN apt-get update \
     && docker-php-ext-enable redis \
     && pecl install memcached-2.2.0 \
     && docker-php-ext-enable memcached \
+    && echo no | pecl install mongo-1.6.16 \
+    && docker-php-ext-enable mongo \
     && docker-php-ext-install mysqli pdo pdo_mysql \
     && docker-php-ext-install mcrypt \
     && docker-php-ext-enable mysqli \
