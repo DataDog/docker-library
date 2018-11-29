@@ -1,0 +1,13 @@
+FROM circleci/php:7.0.32-cli-stretch
+
+USER root
+
+COPY install-php7-common-dependencies.sh /tmp/install-php7-common-dependencies.sh
+
+RUN apt-get update \
+    && sh /tmp/install-php7-common-dependencies.sh \
+    && apt-get install libmcrypt-dev \
+    && docker-php-ext-install mcrypt \
+    && rm -rf /var/lib/apt/lists/*
+
+USER circleci
