@@ -3,6 +3,7 @@
 apt-get install -y \
         libmemcached-dev \
         valgrind \
+        vim \
         mysql-client \
     && pecl install redis \
     && docker-php-ext-enable redis \
