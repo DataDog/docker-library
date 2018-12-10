@@ -4,6 +4,7 @@ USER root
 
 RUN apt-get update \
     && apt-get install -y \
+        vim \
         libssl-dev \
         libmemcached-dev \
         valgrind \
