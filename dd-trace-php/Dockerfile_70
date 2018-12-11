@@ -10,4 +10,6 @@ RUN apt-get update \
     && docker-php-ext-install mcrypt \
     && rm -rf /var/lib/apt/lists/*
 
+COPY php.ini /usr/local/etc/php/php.ini
+
 USER circleci
