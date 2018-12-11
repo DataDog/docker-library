@@ -1,4 +1,4 @@
-  # Latest image for this Dockerfile: datadog/docker-library:ddtrace_py
+# Latest image for this Dockerfile: datadog/docker-library:ddtrace_py
 FROM alpine:3.4
 
 RUN \
