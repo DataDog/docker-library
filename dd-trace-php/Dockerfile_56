@@ -24,4 +24,6 @@ RUN apt-get update \
     && docker-php-source delete \
     && rm -rf /var/lib/apt/lists/*
 
+COPY dd-test-env.ini /usr/local/etc/php/conf.d/dd-test-env.ini
+
 USER circleci
