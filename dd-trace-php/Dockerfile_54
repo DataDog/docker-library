@@ -108,6 +108,10 @@ RUN make
 ## Not required for now
 ## RUN echo "no" | pecl install mongo
 
+RUN wget https://github.com/jwilder/dockerize/releases/download/v0.6.1/dockerize-linux-amd64-v0.6.1.tar.gz \
+        && tar -C /usr/local/bin -xzvf dockerize-linux-amd64-v0.6.1.tar.gz \
+        && rm dockerize-linux-amd64-v0.6.1.tar.gz
+
 COPY 5.4.ini /usr/local/etc/php/conf.d/88-5.4.ini
 COPY dd-test-env.ini /usr/local/etc/php/conf.d/dd-test-env.ini
 
