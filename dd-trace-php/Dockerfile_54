@@ -20,6 +20,7 @@ RUN apt-get update && apt-get upgrade -y \
     libxslt-dev \
     libldb-dev \
     libt1-dev \
+    wget \
     autoconf \
     && ln -s x86_64-linux-gnu/curl /usr/include/curl
 
@@ -71,6 +72,7 @@ RUN ./configure  \
     --with-zlib=/usr \
     --with-bz2=/usr \
     --with-kerberos=shared,/usr/lib \
+    --without-pear \
     --disable-nls \
     --enable-debug
 
@@ -92,13 +94,26 @@ RUN groupadd --gid 3434 circleci \
   && echo 'circleci ALL=NOPASSWD: ALL' >> /etc/sudoers.d/50-circleci \
   && echo 'Defaults    env_keep += "DEBIAN_FRONTEND"' >> /etc/sudoers.d/env_keep
 
-RUN echo "no --disable-memcached-sasl" | pecl install memcached-2.2.0
-RUN echo "no" | pecl install mongo
+# PECL not working, so installing from source
+# RUN echo "no --disable-memcached-sasl" | pecl install memcached-2.2.0
+RUN mkdir -p /php-build/memcached
+WORKDIR /php-build/memcached
+RUN wget -O memcached-2.2.0.tar.gz https://github.com/php-memcached-dev/php-memcached/archive/2.2.0.tar.gz
+RUN tar -xf memcached-2.2.0.tar.gz
+WORKDIR /php-build/memcached/php-memcached-2.2.0
+RUN phpize
+RUN ./configure --disable-memcached-sasl
+RUN make
+#
+## Not required for now
+## RUN echo "no" | pecl install mongo
 
 COPY 5.4.ini /usr/local/etc/php/conf.d/88-5.4.ini
 COPY dd-test-env.ini /usr/local/etc/php/conf.d/dd-test-env.ini
 
 USER circleci
+
+WORKDIR /home/circleci/app
 
 ENTRYPOINT ["/bin/bash", "-c"]
 
