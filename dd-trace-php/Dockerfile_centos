@@ -6,7 +6,7 @@ RUN rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-${CENTOS_
   && rpm -Uvh http://rpms.remirepo.net/enterprise/remi-release-${CENTOS_VERSION}.rpm \
   && yum install -y yum-utils valgrind \
   && yum groupinstall -y 'Development Tools'
-ARG PHP_VERSION=72
+ARG PHP_VERSION=54
 RUN yum-config-manager --enable remi-php${PHP_VERSION} \
   && yum install -y php php-cli php-mcrypt php-devel php-xml \
   && yum clean all \
