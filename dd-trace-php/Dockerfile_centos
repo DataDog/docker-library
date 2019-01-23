@@ -1,8 +1,9 @@
 ARG CENTOS_VERSION=6
 FROM centos:${CENTOS_VERSION}
 
-RUN rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm \
-  && rpm -Uvh http://rpms.remirepo.net/enterprise/remi-release-7.rpm \
+ARG CENTOS_VERSION=6
+RUN rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-${CENTOS_VERSION}.noarch.rpm \
+  && rpm -Uvh http://rpms.remirepo.net/enterprise/remi-release-${CENTOS_VERSION}.rpm \
   && yum install -y yum-utils valgrind \
   && yum groupinstall -y 'Development Tools'
 ARG PHP_VERSION=72
