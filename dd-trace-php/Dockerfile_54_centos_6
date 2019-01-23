@@ -1,0 +1,11 @@
+FROM centos:6
+
+RUN rpm -Uvh http://dl.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm \
+  && rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-6.rpm \
+  && yum install -y yum-utils \
+  && yum-config-manager --enable remi-php54 \
+  && yum install -y php php-cli php-mcrypt php-devel \
+  && yum groupinstall -y 'Development Tools' \
+  && yum install -y valgrind php-xml \
+  && yum clean all \
+  && curl -q https://raw.githubusercontent.com/composer/getcomposer.org/1b137f8bf6db3e79a38a5bc45324414a6b1f9df2/web/installer | php -- php -- --filename=composer --install-dir=/usr/local/bin
