@@ -1,12 +1,7 @@
 #!/bin/bash
-EXAMPLE=ddtrace_centos_6_php_54
 TMP=${DOCKER_TAG#ddtrace_centos_}
 
 if [[ $TMP != $DOCKER_TAG ]]; then
-#	CENTOS_VERSION=${TMP%_php_*}
-#	PHP_VERSION=${TMP#*_php_}
-#	echo Build PHP $PHP_VERSION on Centos $CENTOS_VERSION
-#	docker build --build-arg CENTOS_VERSION=$CENTOS_VERSION --build-arg PHP_VERSION=$PHP_VERSION -f $DOCKERFILE_PATH -t $IMAGE_NAME .
 	echo Build all PHP Versions
 	BASE_IMAGE=${DOCKER_REPO}:ddtrace_centos_
 	docker build --build-arg CENTOS_VERSION=6 --build-arg PHP_VERSION=54 -f $DOCKERFILE_PATH -t ${BASE_IMAGE}_6_php_54 .
@@ -20,8 +15,8 @@ if [[ $TMP != $DOCKER_TAG ]]; then
 	docker build --build-arg CENTOS_VERSION=7 --build-arg PHP_VERSION=71 -f $DOCKERFILE_PATH -t ${BASE_IMAGE}_7_php_71 .
 	docker build --build-arg CENTOS_VERSION=7 --build-arg PHP_VERSION=72 -f $DOCKERFILE_PATH -t ${BASE_IMAGE}_7_php_72 .
 	docker build --build-arg CENTOS_VERSION=7 --build-arg PHP_VERSION=73 -f $DOCKERFILE_PATH -t ${BASE_IMAGE}_7_php_73 .
-
-#	docker push ${BASE_IMAGE}_6_php_54
+	
+	echo Push all PHP Versions
 	docker push ${BASE_IMAGE}_6_php_56
 	docker push ${BASE_IMAGE}_6_php_70
 	docker push ${BASE_IMAGE}_6_php_71
@@ -32,6 +27,9 @@ if [[ $TMP != $DOCKER_TAG ]]; then
 	docker push ${BASE_IMAGE}_7_php_71
 	docker push ${BASE_IMAGE}_7_php_72
 	docker push ${BASE_IMAGE}_7_php_73
+
+	# This image will be pushed in normal push step
+	#	docker push ${BASE_IMAGE}_6_php_54
 fi
 
 docker build -f $DOCKERFILE_PATH -t $IMAGE_NAME .
