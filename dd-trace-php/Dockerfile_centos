@@ -3,8 +3,8 @@ FROM centos:${CENTOS_VERSION}
 ARG CENTOS_VERSION=6
 ARG CENTOS_MINOR_VERSION=1
 RUN rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-${CENTOS_VERSION}.noarch.rpm \
-  && rpm -Uvh http://rpms.remirepo.net/enterprise/remi-release-${CENTOS_VERSION}.rpm \
-  && rpm -Uvh https://opensource.wandisco.com/centos/6/git/x86_64/wandisco-git-release-${CENTOS_VERSION}-${CENTOS_MINOR_VERSION}.noarch.rpm \
+  && rpm -Uvh https://rpms.remirepo.net/enterprise/remi-release-${CENTOS_VERSION}.rpm \
+  && rpm -Uvh http://opensource.wandisco.com/centos/6/git/x86_64/wandisco-git-release-${CENTOS_VERSION}-${CENTOS_MINOR_VERSION}.noarch.rpm \
   && yum install -y yum-utils valgrind git \
   && yum groupinstall -y 'Development Tools' \
   && yum clean all
