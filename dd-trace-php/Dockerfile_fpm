@@ -1,10 +1,12 @@
 FROM circleci/ruby:2.5
 
 USER root
-RUN gem install --no-ri --no-rdoc fpm && apt-get update && apt-get install build-essential rpm rpmlint lintian && apt-get clean
-RUN apt-get update
-RUN apt-get install -y vim less
 WORKDIR /home/circleci
-ADD fpm_apk_pax_header.patch /tmp
-RUN ( cd /usr/local/bundle/gems/fpm-1.10.2/ && patch -p 1 /tmp/fpm_apk_pax_header.patch && rm -f /tmp/fpm_apk_pax_header.patch )
+
+RUN apt-get update && apt-get -y install vim less build-essential rpm rpmlint lintian\
+    && gem install --no-rdoc fpm\
+    && (cd /usr/local/bundle/gems/fpm-1.10.2/; patch -p 1 < /tmp/fpm_apk_pax_header.patch )\
+    && rm -f /tmp/fpm_apk_pax_header.patch
+
 USER circleci
+ENTRYPOINT [ "bash" ]
