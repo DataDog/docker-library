@@ -1,0 +1,25 @@
+From cc550fbb6cd9b1c5c001dbbac18cc078de04deff Mon Sep 17 00:00:00 2001
+From: Pawel Chojnacki <pawel.chcki@gmail.com>
+Date: Wed, 30 Jan 2019 16:35:50 +0100
+Subject: [PATCH] Add guard against modifying LongLink entry
+
+---
+ lib/fpm/package/apk.rb | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/lib/fpm/package/apk.rb b/lib/fpm/package/apk.rb
+index dd69067..59a778c 100644
+--- a/lib/fpm/package/apk.rb
++++ b/lib/fpm/package/apk.rb
+@@ -435,6 +435,9 @@ class FPM::Package::APK< FPM::Package
+   # This takes an unchanged directory name and "paxifies" it.
+   def add_paxstring(ret)
+
++    # Check if this is special Tar filename to mark that the next entry file name will be longer than 100 characters.
++    return ret if ret.match? "././@LongLink"
++
+     pax_slash = ret.rindex('/')
+     if(pax_slash == nil)
+       pax_slash = 0
+--
+2.18.0
