@@ -1,5 +1,13 @@
 #!/bin/bash
 TMP=${DOCKER_TAG#ddtrace_centos_}
+export
+pwd
+
+## Fix for a bug in Dockerhub non automated builds?
+if [[ -z $DOCKERFILE_PATH ]]; then
+	export DOCKERFILE_PATH=${BUILD_PATH#/*/}
+fi
+
 
 if [[ $TMP != $DOCKER_TAG ]]; then
 	echo Build all PHP Versions
