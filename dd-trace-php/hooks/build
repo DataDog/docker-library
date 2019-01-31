@@ -11,8 +11,7 @@ fi
 
 if [[ $TMP != $DOCKER_TAG ]]; then
 	echo Build all PHP Versions
-	BASE_IMAGE=${DOCKER_REPO}:ddtrace_centos_
-	docker build --build-arg CENTOS_VERSION=6 --build-arg PHP_VERSION=54 -f $DOCKERFILE_PATH -t ${BASE_IMAGE}_6_php_54 .
+	BASE_IMAGE=${DOCKER_REPO}:ddtrace_centos
 	docker build --build-arg CENTOS_VERSION=6 --build-arg PHP_VERSION=56 -f $DOCKERFILE_PATH -t ${BASE_IMAGE}_6_php_56 .
 	docker build --build-arg CENTOS_VERSION=6 --build-arg PHP_VERSION=70 -f $DOCKERFILE_PATH -t ${BASE_IMAGE}_6_php_70 .
 	docker build --build-arg CENTOS_VERSION=6 --build-arg PHP_VERSION=71 -f $DOCKERFILE_PATH -t ${BASE_IMAGE}_6_php_71 .
@@ -36,7 +35,8 @@ if [[ $TMP != $DOCKER_TAG ]]; then
 	docker push ${BASE_IMAGE}_7_php_72
 	docker push ${BASE_IMAGE}_7_php_73
 
-	# This image will be pushed in normal push step
+	# This image will be buiild/pushed in normal step processing
+	#   docker build --build-arg CENTOS_VERSION=6 --build-arg PHP_VERSION=54 -f $DOCKERFILE_PATH -t ${BASE_IMAGE}_6_php_54 .	
 	#	docker push ${BASE_IMAGE}_6_php_54
 fi
 
