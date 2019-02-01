@@ -1,9 +1,7 @@
 #!/bin/bash
 TMP=${DOCKER_TAG#ddtrace_centos_}
-export
-pwd
 
-## Fix for a bug in Dockerhub non automated builds?
+## Fix for a bug in Dockerhub legacy build process
 if [[ -z $DOCKERFILE_PATH ]]; then
 	export DOCKERFILE_PATH=${BUILD_PATH#/*/}
 fi
@@ -12,6 +10,7 @@ fi
 if [[ $TMP != $DOCKER_TAG ]]; then
 	echo Build all PHP Versions
 	BASE_IMAGE=${DOCKER_REPO}:ddtrace_centos
+	docker build --build-arg CENTOS_VERSION=6 --build-arg PHP_VERSION=54 -f $DOCKERFILE_PATH -t ${BASE_IMAGE}_6_php_54 .
 	docker build --build-arg CENTOS_VERSION=6 --build-arg PHP_VERSION=56 -f $DOCKERFILE_PATH -t ${BASE_IMAGE}_6_php_56 .
 	docker build --build-arg CENTOS_VERSION=6 --build-arg PHP_VERSION=70 -f $DOCKERFILE_PATH -t ${BASE_IMAGE}_6_php_70 .
 	docker build --build-arg CENTOS_VERSION=6 --build-arg PHP_VERSION=71 -f $DOCKERFILE_PATH -t ${BASE_IMAGE}_6_php_71 .
@@ -24,6 +23,7 @@ if [[ $TMP != $DOCKER_TAG ]]; then
 	docker build --build-arg CENTOS_VERSION=7 --build-arg PHP_VERSION=73 -f $DOCKERFILE_PATH -t ${BASE_IMAGE}_7_php_73 .
 	
 	echo Push all PHP Versions
+	docker push ${BASE_IMAGE}_6_php_54
 	docker push ${BASE_IMAGE}_6_php_56
 	docker push ${BASE_IMAGE}_6_php_70
 	docker push ${BASE_IMAGE}_6_php_71
@@ -35,12 +35,15 @@ if [[ $TMP != $DOCKER_TAG ]]; then
 	docker push ${BASE_IMAGE}_7_php_72
 	docker push ${BASE_IMAGE}_7_php_73
 
-	# This image will be buiild/pushed in normal step processing
-	#   docker build --build-arg CENTOS_VERSION=6 --build-arg PHP_VERSION=54 -f $DOCKERFILE_PATH -t ${BASE_IMAGE}_6_php_54 .	
-	#	docker push ${BASE_IMAGE}_6_php_54
+	exit 0
+fi
+
+TMP=${DOCKER_TAG#ddtrace_php_zts_}
+if [[ $TMP != DOCKER_TAG ]]; then
+	# Instead of building images we simply fetch source images and tag them with datadog repo and tag to ensure they only change in a controlled manner
 
 	echo Retag upstream ZTS images
-	ZTS_BASE_IMAGE=${DOCKER_REPO}:ddtrace_php_zts_
+	ZTS_BASE_IMAGE=${DOCKER_REPO}:ddtrace_php_zts
 
 	docker pull circleci/php:5.6-zts
 	docker tag circleci/php:5.6-zts ${ZTS_BASE_IMAGE}_56
@@ -61,6 +64,9 @@ if [[ $TMP != $DOCKER_TAG ]]; then
 	docker pull circleci/php:7.3-zts
 	docker tag circleci/php:7.3-zts ${ZTS_BASE_IMAGE}_73
 	docker push ${ZTS_BASE_IMAGE}_73
+
+	exit 0
 fi
 
+# defualt build
 docker build -f $DOCKERFILE_PATH -t $IMAGE_NAME .
