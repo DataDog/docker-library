@@ -46,24 +46,24 @@ if [[ $TMP != DOCKER_TAG ]]; then
 	ZTS_BASE_IMAGE=${DOCKER_REPO}:ddtrace_php_zts
 
 	docker pull circleci/php:5.6-zts
-	docker tag circleci/php:5.6-zts ${ZTS_BASE_IMAGE}_56
-	docker push ${ZTS_BASE_IMAGE}_56
+	docker tag circleci/php:5.6-zts ${ZTS_BASE_IMAGE}_5_6
+	docker push ${ZTS_BASE_IMAGE}_5_6
 
 	docker pull circleci/php:7.0-zts
-	docker tag circleci/php:7.0-zts ${ZTS_BASE_IMAGE}_70
-	docker push ${ZTS_BASE_IMAGE}_70
+	docker tag circleci/php:7.0-zts ${ZTS_BASE_IMAGE}_7_0
+	docker push ${ZTS_BASE_IMAGE}_7_0
 
 	docker pull circleci/php:7.1-zts
-	docker tag circleci/php:7.1-zts ${ZTS_BASE_IMAGE}_71
-	docker push ${ZTS_BASE_IMAGE}_71
+	docker tag circleci/php:7.1-zts ${ZTS_BASE_IMAGE}_7_1
+	docker push ${ZTS_BASE_IMAGE}_7_1
 
 	docker pull circleci/php:7.2-zts
-	docker tag circleci/php:7.2-zts ${ZTS_BASE_IMAGE}_72
-	docker push ${ZTS_BASE_IMAGE}_72
+	docker tag circleci/php:7.2-zts ${ZTS_BASE_IMAGE}_7_2
+	docker push ${ZTS_BASE_IMAGE}_7_2
 
 	docker pull circleci/php:7.3-zts
-	docker tag circleci/php:7.3-zts ${ZTS_BASE_IMAGE}_73
-	docker push ${ZTS_BASE_IMAGE}_73
+	docker tag circleci/php:7.3-zts ${ZTS_BASE_IMAGE}_7_3
+	docker push ${ZTS_BASE_IMAGE}_7_3
 
 	exit 0
 fi
