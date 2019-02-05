@@ -39,10 +39,12 @@ RUN \
   pyenv install 2.7.15 \
   && pyenv install 3.4.9 \
   && pyenv install 3.5.6 \
-  && pyenv install 3.6.7 \
-  && pyenv install 3.7.1 \
-  && pyenv global 2.7.15 3.4.9 3.5.6 3.6.7 3.7.1 \
+  && pyenv install 3.6.8 \
+  && pyenv install 3.7.2 \
+  && pyenv global 2.7.15 3.4.9 3.5.6 3.6.8 3.7.2 \
   && pip install --upgrade pip
 
 # Install Python dependencies
-RUN pip install "tox>=3.3,<4.0" "detox>=0.18<1.0"
+# DEV: `tox==3.7` introduced parallel execution mode
+#      https://tox.readthedocs.io/en/3.7.0/example/basic.html#parallel-mode
+RUN pip install "tox>=3.7,<4.0"
