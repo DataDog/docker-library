@@ -7,8 +7,10 @@ BUILD_DOCKERFILE := Dockerfile
 DOCKER_BUILD := docker build -q
 DOCKER_EXTRA_QUIET := # > /dev/null 2>&1
 DOCKER_BUILD_COMMON_ARGS := -f $(BUILD_DOCKERFILE) $(BUILD_CONTEXT) $(DOCKER_EXTRA_QUIET)
-# REPO_PREFIX:= ${DOCKER_REPO}:
+REPO := datadog/docker-library
+REPO_PREFIX:= $(REPO):
 BASE_IMAGE := $(REPO_PREFIX)ddtrace_alpine_php
+DO_PUSH := echo docker push
 
 %-vanila: %-shared
 	$(eval TAG = $(BASE_VERSION_TAG) )
@@ -23,22 +25,30 @@ BASE_IMAGE := $(REPO_PREFIX)ddtrace_alpine_php
 %-valgrind: %-shared
 	$(eval TAG = $(BASE_VERSION_TAG)-valgrind )
 	@echo Building $(TAG)
-	@$(DOCKER_BUILD) --build-arg php_config_args="--enable-debug --with-valgrind" $(VERSION_BUILD_ARGS) -t $(TAG) $(DOCKER_BUILD_COMMON_ARGS) 
+	@$(DOCKER_BUILD) --build-arg php_config_args="--enable-debug --with-valgrind" $(VERSION_BUILD_ARGS) -t $(TAG) $(DOCKER_BUILD_COMMON_ARGS)
 
 %-zts-debug: %-shared
 	$(eval TAG = $(BASE_VERSION_TAG)-zts-debug )
 	@echo Building $(TAG)
-	@$(DOCKER_BUILD) --build-arg php_config_args="--enable-maintainer-zts --enable-debug" $(VERSION_BUILD_ARGS) -t $(TAG) $(DOCKER_BUILD_COMMON_ARGS) 
+	@$(DOCKER_BUILD) --build-arg php_config_args="--enable-maintainer-zts --enable-debug" $(VERSION_BUILD_ARGS) -t $(TAG) $(DOCKER_BUILD_COMMON_ARGS)
 
 %-zts: %-shared
 	$(eval TAG = $(BASE_VERSION_TAG)-zts )
 	@echo Building $(TAG)
-	@$(DOCKER_BUILD) --build-arg php_config_args="--enable-maintainer-zts" $(VERSION_BUILD_ARGS) -t $(TAG) $(DOCKER_BUILD_COMMON_ARGS) 
+	@$(DOCKER_BUILD) --build-arg php_config_args="--enable-maintainer-zts" $(VERSION_BUILD_ARGS) -t $(TAG) $(DOCKER_BUILD_COMMON_ARGS)
+
+%-push: %
+	@echo Pushing tag $(TAG)
+	@docker push $(TAG)
+
+%-push-all: %-vanila-push %-debug-push %-valgrind-push %-zts-debug-push %-zts-push
+	@	
 
 %: %-vanila %-debug %-valgrind %-zts-debug %-zts
 	@
 
 world: 5.4 5.6 7.0 7.0 7.1 7.2 7.3
+push-the-world: 5.4-push-all 5.6-push-all 7.0-push-all 7.0-push-all 7.1-push-all 7.2-push-all 7.3-push-all
 
 7.3-shared:
 	$(eval PHP_VERSION = 7.3.2)
