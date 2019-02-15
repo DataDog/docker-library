@@ -111,7 +111,7 @@ push-the-world: 5.4-push-all 5.6-push-all 7.0-push-all 7.0-push-all 7.1-push-all
 	$(eval BASE_VERSION_TAG = $(BASE_IMAGE)-$(PHP_VERSION))
 	$(eval PHP_URL = https://secure.php.net/get/php-$(PHP_VERSION).tar.xz/from/this/mirror)
 
-	$(eval VERSION_BUILD_ARGS = --build-arg alpine_version=3.8 --build-arg ssl_dep=libressl --build-arg php_version=$(PHP_VERSION) --build-arg php_sha=${PHP_SHA} --build-arg php_url=${PHP_URL})
+	$(eval VERSION_BUILD_ARGS = --build-arg alpine_version=3.4 --build-arg php_version=$(PHP_VERSION) --build-arg php_sha=${PHP_SHA} --build-arg php_url=${PHP_URL})
 
 5.4-shared:
 	$(eval PHP_VERSION =5.4.39)

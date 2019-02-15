@@ -19,7 +19,6 @@ ENV PHP_CFLAGS "-g -O0 -fPIC"
 ENV PHP_CPPFLAGS "$PHP_CFLAGS"
 ENV PHP_LDFLAGS "-Wl,-O0 -Wl,--hash-style=both -pie"
 
-
 COPY docker-php-ext-* docker-php-source /usr/local/bin/
 
 # persistent / runtime deps
@@ -30,7 +29,7 @@ RUN set -eux; apk add --no-cache --virtual .persistent-deps \
 		xz \
 		;\
 	\
-	apk add --no-cache --virtual .persistent-test-deps make autoconf gcc g++ git; \
+	apk add --no-cache --virtual .persistent-test-deps make autoconf gcc g++ git openssh valgrind gdb; \
 	\
 	# user/group www-data for circleci\
 	addgroup -g 3434 -S circleci;\
@@ -50,7 +49,33 @@ RUN set -eux; apk add --no-cache --virtual .persistent-deps \
  	chown www-data:www-data /var/www/html; \
  	chmod 777 /var/www/html
 
-# Shared with flavor part
+### CircleCI dependencies
+
+RUN set -ex \
+	&& export DOCKER_VERSION=$(curl --silent --fail --retry 3 https://download.docker.com/linux/static/stable/x86_64/ | grep -o -e 'docker-[.0-9]*-ce\.tgz' | sort -r | head -n 1) \
+	&& DOCKER_URL="https://download.docker.com/linux/static/stable/x86_64/${DOCKER_VERSION}" \
+	&& echo Docker URL: $DOCKER_URL \
+	&& curl --silent --show-error --location --fail --retry 3 --output /tmp/docker.tgz "${DOCKER_URL}" \
+	&& ls -lha /tmp/docker.tgz \
+	&& tar -xz -C /tmp -f /tmp/docker.tgz \
+	&& mv /tmp/docker/* /usr/bin \
+	&& rm -rf /tmp/docker /tmp/docker.tgz \
+	&& which docker \
+	&& (docker version || true); \
+# install docker-compose\
+	apk add --no-cache --virtual .persistent-docker-compose python3; \
+	pip3 install docker-compose; \
+	docker-compose --version; \
+# install dockerize\
+	DOCKERIZE_URL="https://circle-downloads.s3.amazonaws.com/circleci-images/cache/linux-amd64/dockerize-latest.tar.gz" \
+	&& curl --silent --show-error --location --fail --retry 3 --output /tmp/dockerize-linux-amd64.tar.gz $DOCKERIZE_URL \
+	&& tar -C /usr/local/bin -xzvf /tmp/dockerize-linux-amd64.tar.gz \
+	&& rm -rf /tmp/dockerize-linux-amd64.tar.gz \
+	&& dockerize --version
+
+### End CircleCi dependencies
+
+# Shared with PHP flavor part
 
 ARG php_version=7.3.2
 ARG php_url=https://secure.php.net/get/php-7.3.2.tar.xz/from/this/mirror
