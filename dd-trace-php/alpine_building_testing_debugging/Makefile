@@ -1,16 +1,34 @@
+## Make file use
+### create all images for version
+#> make 7.2
+## produces images based on PHP 7.2 without debug (-vanila), with debug (-debug), with valgrind (-valgrind), with zts (-zts), and with zts debug (-zts-debug)
 
-.PHONY=all 7.3
+### create only "without debug" image
+## make 7.2-vanila 
+### create only "zts with debug" image
+## make 7.2-zts-debug #... etc
+
+## Make all images for supported versions
+#> make world
+
+## Make and push all images to repository (requires persmission)
+#> make push-the-world
+
+## Supported options
+# make <...> Q= # disables quiet mode i.e. verbose build
+# make <...> REPO= # build images for repository other than datadog/docker-library
+
 WITH_VALGRIND_SUPPORT = --with-valgrind
 WITH_DEBUG = --enable-debug
 BUILD_CONTEXT := .
 BUILD_DOCKERFILE := Dockerfile
-DOCKER_BUILD := docker build -q
+Q=-q
+DOCKER_BUILD := docker build $(Q)
 DOCKER_EXTRA_QUIET := # > /dev/null 2>&1
 DOCKER_BUILD_COMMON_ARGS := -f $(BUILD_DOCKERFILE) $(BUILD_CONTEXT) $(DOCKER_EXTRA_QUIET)
 REPO := datadog/docker-library
 REPO_PREFIX:= $(REPO):
 BASE_IMAGE := $(REPO_PREFIX)ddtrace_alpine_php
-DO_PUSH := echo docker push
 
 %-vanila: %-shared
 	$(eval TAG = $(BASE_VERSION_TAG) )
@@ -93,7 +111,7 @@ push-the-world: 5.4-push-all 5.6-push-all 7.0-push-all 7.0-push-all 7.1-push-all
 	$(eval BASE_VERSION_TAG = $(BASE_IMAGE)-$(PHP_VERSION))
 	$(eval PHP_URL = https://secure.php.net/get/php-$(PHP_VERSION).tar.xz/from/this/mirror)
 
-	$(eval VERSION_BUILD_ARGS = --build-arg php_version=$(PHP_VERSION) --build-arg php_sha=${PHP_SHA} --build-arg php_url=${PHP_URL})
+	$(eval VERSION_BUILD_ARGS = --build-arg alpine_version=3.8 --build-arg ssl_dep=libressl --build-arg php_version=$(PHP_VERSION) --build-arg php_sha=${PHP_SHA} --build-arg php_url=${PHP_URL})
 
 5.4-shared:
 	$(eval PHP_VERSION =5.4.39)
@@ -102,4 +120,4 @@ push-the-world: 5.4-push-all 5.6-push-all 7.0-push-all 7.0-push-all 7.1-push-all
 	$(eval BASE_VERSION_TAG = $(BASE_IMAGE)-$(PHP_VERSION))
 	$(eval PHP_URL = https://secure.php.net/get/php-$(PHP_VERSION).tar.bz2/from/this/mirror)
 
-	$(eval VERSION_BUILD_ARGS = --build-arg php_version=$(PHP_VERSION) --build-arg php_sha=${PHP_SHA} --build-arg php_url=${PHP_URL})
+	$(eval VERSION_BUILD_ARGS = --build-arg alpine_version=3.4 --build-arg php_version=$(PHP_VERSION) --build-arg php_sha=${PHP_SHA} --build-arg php_url=${PHP_URL})

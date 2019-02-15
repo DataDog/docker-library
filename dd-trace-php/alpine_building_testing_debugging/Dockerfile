@@ -1,4 +1,5 @@
-FROM alpine:3.9
+ARG alpine_version=3.9
+FROM alpine:${alpine_version}
 
 # dependencies required for running "phpize"
 # these get automatically installed and removed by "docker-php-ext-*" (unless they're already installed)
@@ -14,7 +15,7 @@ ENV PHPIZE_DEPS \
 		re2c
 
 ENV PHP_INI_DIR /usr/local/etc/php
-ENV PHP_CFLAGS "-g -O0"
+ENV PHP_CFLAGS "-g -O0 -fPIC"
 ENV PHP_CPPFLAGS "$PHP_CFLAGS"
 ENV PHP_LDFLAGS "-Wl,-O0 -Wl,--hash-style=both -pie"
 
@@ -75,10 +76,10 @@ RUN set -xe; \
 
 # Optional ssl configuration
 # can be set either to openssl or libressl and openssl-dev and libressl-dev respectively
-arg ssl_dev_dep=""
-arg ssl_dep=""
-ENV SSL_DEV_DEP ${ssl_dev_dep}
+arg ssl_dep="openssl"
+arg ssl_dev_dep="${ssl_dep}-dev"
 ENV SSL_DEP ${ssl_dep}
+ENV SSL_DEV_DEP ${ssl_dev_dep}
 
 # Compilation variable part
 ARG php_config_args=""
@@ -130,8 +131,8 @@ RUN set -xe;\
 	apk del .build-deps; \
  	pecl update-channels; \
 	\
- 	rm -rf /tmp/pear ~/.pearrc;
-
+ 	rm -rf /tmp/pear ~/.pearrc; \
+	(curl -q https://raw.githubusercontent.com/composer/getcomposer.org/76a7060ccb93902cd7576b67264ad91c8a2700e2/web/installer | php -- --filename=composer --install-dir=/usr/local/bin)
 
 WORKDIR /home/circleci
 USER circleci
