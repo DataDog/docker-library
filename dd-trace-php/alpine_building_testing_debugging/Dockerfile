@@ -27,9 +27,10 @@ RUN set -eux; apk add --no-cache --virtual .persistent-deps \
 		curl \
 		tar \
 		xz \
+		libexecinfo \
 		;\
 	\
-	apk add --no-cache --virtual .persistent-test-deps make autoconf gcc g++ git openssh valgrind gdb; \
+	apk add --no-cache --virtual .persistent-ci-tests-deps bash make autoconf gcc g++ git openssh valgrind gdb; \
 	\
 	# user/group www-data for circleci\
 	addgroup -g 3434 -S circleci;\
@@ -129,7 +130,14 @@ RUN set -xe;\
 	./configure \
 		--with-config-file-path="$PHP_INI_DIR" \
 		--with-config-file-scan-dir="$PHP_INI_DIR/conf.d" \
-	 	--with-mhash --enable-ftp --enable-mbstring --enable-mysqlnd --with-sodium=shared --with-curl --with-libedit \
+	 	--with-mhash \
+		--enable-ftp \
+		--enable-mbstring \
+		--enable-mysqlnd \
+		--with-sodium=shared \
+		--with-curl \
+		--with-libedit \
+		--with-memcache \
 		$([ -n "$SSL_DEV_DEP" ] && echo --with-openssl || echo --without-openssl ) \
 		--with-zlib \
 		--enable-fpm \
@@ -141,7 +149,25 @@ RUN set -xe;\
 	\
 	make -j "$(nproc)"; \
 	make install clean; \
-	# docker-php-ext-enable sodium; \
+	# create and fix fpm config \
+	(export T=/usr/local/etc/php-fpm.conf; mv /usr/local/etc/php-fpm.conf.default $T; sed -i 's#NONE/##g' $T); \
+	(export T=/usr/local/etc/php-fpm.d/www.conf; mv $T.default $T); \
+	cd /usr/local/etc; { \
+		echo '[global]'; \
+		echo 'error_log = /proc/self/fd/2'; \
+		echo '[www]'; \
+		echo 'access.log = /proc/self/fd/2'; \
+		echo 'clear_env = no'; \
+		echo '; Ensure worker stdout and stderr are sent to the main error log.'; \
+		echo 'catch_workers_output = yes'; \
+	} | tee php-fpm.d/docker.conf \
+	&& { \
+		echo '[global]'; \
+		echo 'daemonize = no'; \
+		echo; \
+		echo '[www]'; \
+		echo 'listen = 9000'; \
+	} | tee php-fpm.d/zz-docker.conf; \
 	cd /; \
 	docker-php-source delete;\
 	export runDeps="$( \
