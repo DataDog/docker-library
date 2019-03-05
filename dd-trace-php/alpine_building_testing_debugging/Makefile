@@ -12,7 +12,7 @@
 #> make world
 
 ## Make and push all images to repository (requires persmission)
-#> make push-the-world
+#> make world-push
 
 ## Supported options
 # make <...> Q= # disables quiet mode i.e. verbose build
@@ -66,13 +66,13 @@ BASE_IMAGE := $(REPO_PREFIX)ddtrace_alpine_php
 	@
 
 world: 5.4 5.6 7.0 7.0 7.1 7.2 7.3
-push-the-world: 5.4-push-all 5.6-push-all 7.0-push-all 7.0-push-all 7.1-push-all 7.2-push-all 7.3-push-all
+world-push: 5.4-push-all 5.6-push-all 7.0-push-all 7.0-push-all 7.1-push-all 7.2-push-all 7.3-push-all
 
 7.3-shared:
 	$(eval PHP_VERSION = 7.3.2)
 	$(eval PHP_SHA = 010b868b4456644ae227d05ad236c8b0a1f57dc6320e7e5ad75e86c5baf0a9a8)
 
-	$(eval BASE_VERSION_TAG = $(BASE_IMAGE)-$(PHP_VERSION))
+	$(eval BASE_VERSION_TAG = $(BASE_IMAGE)-7.3)
 	$(eval PHP_URL = https://secure.php.net/get/php-$(PHP_VERSION).tar.xz/from/this/mirror)
 
 	$(eval VERSION_BUILD_ARGS = --build-arg php_version=$(PHP_VERSION) --build-arg php_sha=${PHP_SHA} --build-arg php_url=${PHP_URL})
@@ -81,7 +81,7 @@ push-the-world: 5.4-push-all 5.6-push-all 7.0-push-all 7.0-push-all 7.1-push-all
 	$(eval PHP_VERSION = 7.2.9)
 	$(eval PHP_SHA = 3585c1222e00494efee4f5a65a8e03a1e6eca3dfb834814236ee7f02c5248ae0)
 
-	$(eval BASE_VERSION_TAG = $(BASE_IMAGE)-$(PHP_VERSION))
+	$(eval BASE_VERSION_TAG = $(BASE_IMAGE)-7.2)
 	$(eval PHP_URL = https://secure.php.net/get/php-$(PHP_VERSION).tar.xz/from/this/mirror)
 
 	$(eval VERSION_BUILD_ARGS = --build-arg php_version=$(PHP_VERSION) --build-arg php_sha=${PHP_SHA} --build-arg php_url=${PHP_URL})
@@ -90,7 +90,7 @@ push-the-world: 5.4-push-all 5.6-push-all 7.0-push-all 7.0-push-all 7.1-push-all
 	$(eval PHP_VERSION = 7.1.21)
 	$(eval PHP_SHA = d4da6dc69d3fe1e6b2b80f16b262f391037bfeb21213c966e026bd45d7ca2813)
 
-	$(eval BASE_VERSION_TAG = $(BASE_IMAGE)-$(PHP_VERSION))
+	$(eval BASE_VERSION_TAG = $(BASE_IMAGE)-7.1)
 	$(eval PHP_URL = https://secure.php.net/get/php-$(PHP_VERSION).tar.xz/from/this/mirror)
 
 	$(eval VERSION_BUILD_ARGS = --build-arg php_version=$(PHP_VERSION) --build-arg php_sha=${PHP_SHA} --build-arg php_url=${PHP_URL})
@@ -99,7 +99,7 @@ push-the-world: 5.4-push-all 5.6-push-all 7.0-push-all 7.0-push-all 7.1-push-all
 	$(eval PHP_VERSION = 7.0.33)
 	$(eval PHP_SHA = ab8c5be6e32b1f8d032909dedaaaa4bbb1a209e519abb01a52ce3914f9a13d96)
 
-	$(eval BASE_VERSION_TAG = $(BASE_IMAGE)-$(PHP_VERSION))
+	$(eval BASE_VERSION_TAG = $(BASE_IMAGE)-7.0)
 	$(eval PHP_URL = https://secure.php.net/get/php-$(PHP_VERSION).tar.xz/from/this/mirror)
 
 	$(eval VERSION_BUILD_ARGS = --build-arg php_version=$(PHP_VERSION) --build-arg php_sha=${PHP_SHA} --build-arg php_url=${PHP_URL})
@@ -108,7 +108,7 @@ push-the-world: 5.4-push-all 5.6-push-all 7.0-push-all 7.0-push-all 7.1-push-all
 	$(eval PHP_VERSION = 5.6.40)
 	$(eval PHP_SHA = 1369a51eee3995d7fbd1c5342e5cc917760e276d561595b6052b21ace2656d1c)
 
-	$(eval BASE_VERSION_TAG = $(BASE_IMAGE)-$(PHP_VERSION))
+	$(eval BASE_VERSION_TAG = $(BASE_IMAGE)-5.6)
 	$(eval PHP_URL = https://secure.php.net/get/php-$(PHP_VERSION).tar.xz/from/this/mirror)
 
 	$(eval VERSION_BUILD_ARGS = --build-arg alpine_version=3.4 --build-arg php_version=$(PHP_VERSION) --build-arg php_sha=${PHP_SHA} --build-arg php_url=${PHP_URL})
@@ -117,7 +117,7 @@ push-the-world: 5.4-push-all 5.6-push-all 7.0-push-all 7.0-push-all 7.1-push-all
 	$(eval PHP_VERSION =5.4.39)
 	$(eval PHP_SHA = 7ceb76538e709c74533210ae41148d5c01c330ac8a73220954bbc4fcae69d77e)
 
-	$(eval BASE_VERSION_TAG = $(BASE_IMAGE)-$(PHP_VERSION))
+	$(eval BASE_VERSION_TAG = $(BASE_IMAGE)-5.4)
 	$(eval PHP_URL = https://secure.php.net/get/php-$(PHP_VERSION).tar.bz2/from/this/mirror)
 
 	$(eval VERSION_BUILD_ARGS = --build-arg alpine_version=3.4 --build-arg php_version=$(PHP_VERSION) --build-arg php_sha=${PHP_SHA} --build-arg php_url=${PHP_URL})

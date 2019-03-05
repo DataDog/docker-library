@@ -179,11 +179,14 @@ RUN set -xe;\
 	\
 	apk del .build-deps; \
  	pecl update-channels; \
-	apk add --no-cache --virtual .tmp pkgconf zlib-dev libmemcached-dev; \
-	yes '' | pecl install -f apcu memcached; \
-	apk del .tmp; \
  	rm -rf /tmp/pear ~/.pearrc; \
 	(curl -q https://raw.githubusercontent.com/composer/getcomposer.org/76a7060ccb93902cd7576b67264ad91c8a2700e2/web/installer | php -- --filename=composer --install-dir=/usr/local/bin)
+
+# Extensions variability part
+# RUN set -xe; \
+# 	apk add --no-cache --virtual .tmp pkgconf zlib-dev libmemcached-dev; \
+# 	yes '' | pecl install -f memcached; \
+# 	apk del .tmp;
 
 WORKDIR /home/circleci
 USER circleci
