@@ -27,7 +27,6 @@ RUN set -eux; apk add --no-cache --virtual .persistent-deps \
 		curl \
 		tar \
 		xz \
-		libexecinfo \
 		;\
 	\
 	apk add --no-cache --virtual .persistent-ci-tests-deps bash make autoconf gcc g++ git openssh valgrind gdb; \
@@ -137,7 +136,6 @@ RUN set -xe;\
 		--with-sodium=shared \
 		--with-curl \
 		--with-libedit \
-		--with-memcache \
 		$([ -n "$SSL_DEV_DEP" ] && echo --with-openssl || echo --without-openssl ) \
 		--with-zlib \
 		--enable-fpm \
@@ -181,7 +179,9 @@ RUN set -xe;\
 	\
 	apk del .build-deps; \
  	pecl update-channels; \
-	\
+	apk add --no-cache --virtual .tmp pkgconf zlib-dev libmemcached-dev; \
+	yes '' | pecl install -f apcu memcached; \
+	apk del .tmp; \
  	rm -rf /tmp/pear ~/.pearrc; \
 	(curl -q https://raw.githubusercontent.com/composer/getcomposer.org/76a7060ccb93902cd7576b67264ad91c8a2700e2/web/installer | php -- --filename=composer --install-dir=/usr/local/bin)
 
