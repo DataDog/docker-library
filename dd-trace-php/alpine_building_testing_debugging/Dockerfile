@@ -122,7 +122,8 @@ RUN set -xe;\
 		libxml2-dev \
 		${SSL_DEV_DEP} \
 		sqlite-dev \
-		postgresql-dev\
+		postgresql-dev \
+		libmcrypt-dev \
 		;\
 	\
 	export CFLAGS="$PHP_CFLAGS" CPPFLAGS="$PHP_CPPFLAGS" LDFLAGS="$PHP_LDFLAGS"; \ 
@@ -130,6 +131,7 @@ RUN set -xe;\
 		--with-config-file-path="$PHP_INI_DIR" \
 		--with-config-file-scan-dir="$PHP_INI_DIR/conf.d" \
 	 	--with-mhash \
+	    --with-mcrypt \
 		--enable-ftp \
 		--enable-mbstring \
 		--enable-mysqlnd \
@@ -182,15 +184,38 @@ RUN set -xe;\
  	rm -rf /tmp/pear ~/.pearrc; \
 	(curl -q https://raw.githubusercontent.com/composer/getcomposer.org/76a7060ccb93902cd7576b67264ad91c8a2700e2/web/installer | php -- --filename=composer --install-dir=/usr/local/bin)
 
-ARG installable_extensions="apcu memcached"
-ENV PHP_CONFIG_ARGS ${installable_extensions}
-# Extensions variability part
+COPY --chown=circleci:wheel rootfs/home/circleci /home/circleci
+COPY rootfs/usr /usr
+
+# Extensions 
 RUN set -xe; \
-	apk add --no-cache --virtual .tmp pkgconf zlib-dev libmemcached-dev; \
-	[[ -n "${installable_extensions}" ]] && ( yes '' | pecl install -f ${installable_extensions} ); \
-	apk del .tmp;
+	apk add --no-cache --virtual .tmp pkgconf zlib-dev libmemcached-dev;  \
+	[ -z "${PHP_VERSION##5.*}" ] && ( set -xe; \
+		apk add --no-cache --virtual .tmp.5.x openssl-dev cyrus-sasl-dev; \
+		cd /tmp; \
+		mkdir memcached; cd memcached; \
+		curl -L -o memcached.tar.gz https://github.com/php-memcached-dev/php-memcached/archive/2.2.0.tar.gz; \
+		tar xf memcached.tar.gz --strip-component=1; \
+		phpize; ./configure --disable-memcached-sasl; \
+		make install; \
+		cd ..; rm -rf memcached; \
+		yes 'no' | pecl install mongo; \ 
+		docker-php-ext-enable memcached; \
+		docker-php-ext-enable mongo; \
+		apk del .tmp.5.x; \
+	); \
+	[ -z "${PHP_VERSION##7.*}" ] && ( set -xe; \
+		yes '' | pecl install apcu; \
+		yes 'no' | pecl install memcached; \
+		docker-php-ext-enable memcached; \
+		pecl install redis; \
+		docker-php-ext-enable redis; \
+	); \
+	apk del .tmp; \
+	# runtime deps \
+	apk add  --no-cache libmemcached;
 
 WORKDIR /home/circleci
 USER circleci
 
-CMD [ "sh" ]
+CMD [ "bash", "-l" ]

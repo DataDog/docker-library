@@ -30,34 +30,42 @@ REPO := datadog/docker-library
 REPO_PREFIX:= $(REPO):
 BASE_IMAGE := $(REPO_PREFIX)ddtrace_alpine_php
 
+PUSH := no
+
 %-vanila: TAG="$(BASE_VERSION_TAG)"
 %-vanila: %-shared 
 	@echo Building $(TAG)
 	@$(DOCKER_BUILD) $(VERSION_BUILD_ARGS) $(DOCKER_BUILD_COMMON_ARGS) -t $(TAG) $(DOCKER_EXTRA_QUIET)
+	@if [[ $(PUSH) == "yes" ]]; then echo Pushing tag $(TAG); docker push $(TAG); fi
+
 
 %-debug: TAG=$(BASE_VERSION_TAG)-debug
 %-debug: %-shared 
 	@echo Building $(TAG)
 	@$(DOCKER_BUILD) --build-arg php_config_args="--enable-debug" $(VERSION_BUILD_ARGS) -t $(TAG) $(DOCKER_BUILD_COMMON_ARGS)
+	@if [[ $(PUSH) == "yes" ]]; then echo Pushing tag $(TAG); docker push $(TAG); fi
 
 %-valgrind: TAG=$(BASE_VERSION_TAG)-valgrind
 %-valgrind: %-shared
 	@echo Building $(TAG)
 	@$(DOCKER_BUILD) --build-arg php_config_args="--enable-debug --with-valgrind" $(VERSION_BUILD_ARGS) -t $(TAG) $(DOCKER_BUILD_COMMON_ARGS)
+	@if [[ $(PUSH) == "yes" ]]; then echo Pushing tag $(TAG); docker push $(TAG); fi
 
 %-zts-debug: TAG=$(BASE_VERSION_TAG)-zts-debug
 %-zts-debug: %-shared
 	@echo Building $(TAG)
 	@$(DOCKER_BUILD) --build-arg php_config_args="--enable-maintainer-zts --enable-debug" $(VERSION_BUILD_ARGS) -t $(TAG) $(DOCKER_BUILD_COMMON_ARGS)
+	@if [[ $(PUSH) == "yes" ]]; then echo Pushing tag $(TAG); docker push $(TAG); fi
 
 %-zts: TAG=$(BASE_VERSION_TAG)-zts
 %-zts: %-shared 
 	@echo Building $(TAG)
 	@$(DOCKER_BUILD) --build-arg php_config_args="--enable-maintainer-zts" $(VERSION_BUILD_ARGS) -t $(TAG) $(DOCKER_BUILD_COMMON_ARGS)
+	@if [[ $(PUSH) == "yes" ]]; then echo Pushing tag $(TAG); docker push $(TAG); fi
 
+%-push: PUSH=yes
 %-push: %
-	@echo Pushing tag $(TAG)
-	@docker push $(TAG)
+	@
 
 %-push-all: %-vanila-push %-debug-push %-valgrind-push %-zts-debug-push %-zts-push
 	@	
@@ -66,7 +74,9 @@ BASE_IMAGE := $(REPO_PREFIX)ddtrace_alpine_php
 	@
 
 all: 5.4 5.5 5.6 7.0 7.0 7.1 7.2 7.3
-push-all: 5.4-push-all 5.5-push-all 5.6-push-all 7.0-push-all 7.0-push-all 7.1-push-all 7.2-push-all 7.3-push-all
+push-all: PUSH=yes
+push-all: all
+
 
 7.3-shared:
 	$(eval PHP_VERSION = 7.3.2)
