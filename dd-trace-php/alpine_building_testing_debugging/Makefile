@@ -30,28 +30,28 @@ REPO := datadog/docker-library
 REPO_PREFIX:= $(REPO):
 BASE_IMAGE := $(REPO_PREFIX)ddtrace_alpine_php
 
-%-vanila: %-shared
-	$(eval TAG = $(BASE_VERSION_TAG) )
+%-vanila: TAG="$(BASE_VERSION_TAG)"
+%-vanila: %-shared 
 	@echo Building $(TAG)
 	@$(DOCKER_BUILD) $(VERSION_BUILD_ARGS) $(DOCKER_BUILD_COMMON_ARGS) -t $(TAG) $(DOCKER_EXTRA_QUIET)
 
-%-debug: %-shared
-	$(eval TAG = $(BASE_VERSION_TAG)-debug )
+%-debug: TAG=$(BASE_VERSION_TAG)-debug
+%-debug: %-shared 
 	@echo Building $(TAG)
 	@$(DOCKER_BUILD) --build-arg php_config_args="--enable-debug" $(VERSION_BUILD_ARGS) -t $(TAG) $(DOCKER_BUILD_COMMON_ARGS)
 
+%-valgrind: TAG=$(BASE_VERSION_TAG)-valgrind
 %-valgrind: %-shared
-	$(eval TAG = $(BASE_VERSION_TAG)-valgrind )
 	@echo Building $(TAG)
 	@$(DOCKER_BUILD) --build-arg php_config_args="--enable-debug --with-valgrind" $(VERSION_BUILD_ARGS) -t $(TAG) $(DOCKER_BUILD_COMMON_ARGS)
 
+%-zts-debug: TAG=$(BASE_VERSION_TAG)-zts-debug
 %-zts-debug: %-shared
-	$(eval TAG = $(BASE_VERSION_TAG)-zts-debug )
 	@echo Building $(TAG)
 	@$(DOCKER_BUILD) --build-arg php_config_args="--enable-maintainer-zts --enable-debug" $(VERSION_BUILD_ARGS) -t $(TAG) $(DOCKER_BUILD_COMMON_ARGS)
 
-%-zts: %-shared
-	$(eval TAG = $(BASE_VERSION_TAG)-zts )
+%-zts: TAG=$(BASE_VERSION_TAG)-zts
+%-zts: %-shared 
 	@echo Building $(TAG)
 	@$(DOCKER_BUILD) --build-arg php_config_args="--enable-maintainer-zts" $(VERSION_BUILD_ARGS) -t $(TAG) $(DOCKER_BUILD_COMMON_ARGS)
 
@@ -65,8 +65,8 @@ BASE_IMAGE := $(REPO_PREFIX)ddtrace_alpine_php
 %: %-vanila %-debug %-valgrind %-zts-debug %-zts
 	@
 
-all: 5.4 5.6 7.0 7.0 7.1 7.2 7.3
-push-all: 5.4-push-all 5.6-push-all 7.0-push-all 7.0-push-all 7.1-push-all 7.2-push-all 7.3-push-all
+all: 5.4 5.5 5.6 7.0 7.0 7.1 7.2 7.3
+push-all: 5.4-push-all 5.5-push-all 5.6-push-all 7.0-push-all 7.0-push-all 7.1-push-all 7.2-push-all 7.3-push-all
 
 7.3-shared:
 	$(eval PHP_VERSION = 7.3.2)
@@ -112,6 +112,16 @@ push-all: 5.4-push-all 5.6-push-all 7.0-push-all 7.0-push-all 7.1-push-all 7.2-p
 	$(eval PHP_URL = https://secure.php.net/get/php-$(PHP_VERSION).tar.xz/from/this/mirror)
 
 	$(eval VERSION_BUILD_ARGS = --build-arg alpine_version=3.4 --build-arg php_version=$(PHP_VERSION) --build-arg php_sha=${PHP_SHA} --build-arg php_url=${PHP_URL})
+
+5.5-shared:
+	$(eval PHP_VERSION = 5.5.38)
+	$(eval PHP_SHA = 473c81ebb2e48ca468caee031762266651843d7227c18a824add9b07b9393e38)
+
+	$(eval BASE_VERSION_TAG = $(BASE_IMAGE)-5.5)
+	$(eval PHP_URL = https://secure.php.net/get/php-$(PHP_VERSION).tar.bz2/from/this/mirror)
+
+	$(eval VERSION_BUILD_ARGS = --build-arg alpine_version=3.4 --build-arg php_version=$(PHP_VERSION) --build-arg php_sha=${PHP_SHA} --build-arg php_url=${PHP_URL})
+
 
 5.4-shared:
 	$(eval PHP_VERSION =5.4.39)

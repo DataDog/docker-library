@@ -182,11 +182,13 @@ RUN set -xe;\
  	rm -rf /tmp/pear ~/.pearrc; \
 	(curl -q https://raw.githubusercontent.com/composer/getcomposer.org/76a7060ccb93902cd7576b67264ad91c8a2700e2/web/installer | php -- --filename=composer --install-dir=/usr/local/bin)
 
+ARG installable_extensions="apcu memcached"
+ENV PHP_CONFIG_ARGS ${installable_extensions}
 # Extensions variability part
-# RUN set -xe; \
-# 	apk add --no-cache --virtual .tmp pkgconf zlib-dev libmemcached-dev; \
-# 	yes '' | pecl install -f memcached; \
-# 	apk del .tmp;
+RUN set -xe; \
+	apk add --no-cache --virtual .tmp pkgconf zlib-dev libmemcached-dev; \
+	[[ -n "${installable_extensions}" ]] && ( yes '' | pecl install -f ${installable_extensions} ); \
+	apk del .tmp;
 
 WORKDIR /home/circleci
 USER circleci
