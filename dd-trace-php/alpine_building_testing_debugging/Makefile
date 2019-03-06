@@ -9,10 +9,10 @@
 ## make 7.2-zts-debug #... etc
 
 ## Make all images for supported versions
-#> make world
+#> make all
 
 ## Make and push all images to repository (requires persmission)
-#> make world-push
+#> make all-push
 
 ## Supported options
 # make <...> Q= # disables quiet mode i.e. verbose build
@@ -65,8 +65,8 @@ BASE_IMAGE := $(REPO_PREFIX)ddtrace_alpine_php
 %: %-vanila %-debug %-valgrind %-zts-debug %-zts
 	@
 
-world: 5.4 5.6 7.0 7.0 7.1 7.2 7.3
-world-push: 5.4-push-all 5.6-push-all 7.0-push-all 7.0-push-all 7.1-push-all 7.2-push-all 7.3-push-all
+all: 5.4 5.6 7.0 7.0 7.1 7.2 7.3
+push-all: 5.4-push-all 5.6-push-all 7.0-push-all 7.0-push-all 7.1-push-all 7.2-push-all 7.3-push-all
 
 7.3-shared:
 	$(eval PHP_VERSION = 7.3.2)
