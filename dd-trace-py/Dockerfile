@@ -17,6 +17,7 @@ RUN \
       libbz2-dev \
       libffi-dev \
       libmariadb-dev \
+      libmariadb-dev-compat \
       libmemcached-dev \
       libmemcached-dev \
       libncurses5 \
