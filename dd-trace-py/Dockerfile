@@ -1,38 +1,42 @@
 # Latest image for this Dockerfile: datadog/docker-library:ddtrace_py
-FROM alpine:3.4
+
+# DEV: Use `python:slim` instead of an `alpine` image to support installing wheels from PyPI
+#      this drastically improves test execution time since python dependencies don't all
+#      have to be built from source all the time (grpcio takes forever to install)
+FROM python:slim
 
 RUN \
   # Install system dependencies
-  apk add --no-cache --update \
-      python \
-      bash \
-      build-base \
-      bzip2-dev \
+  apt-get update \
+  && apt-get install -y --no-install-recommends \
+      build-essential \
       ca-certificates \
       curl \
-      cyrus-sasl-dev \
       git \
       jq \
+      libbz2-dev \
       libffi-dev \
+      libmariadb-dev \
       libmemcached-dev \
-      linux-headers \
-      mariadb-dev \
-      memcached-dev \
-      ncurses-dev \
-      openssl \
-      openssl-dev \
+      libmemcached-dev \
+      libncurses5 \
+      libpq-dev \
+      libreadline-dev \
+      libsasl2-dev \
+      libsqlite3-dev \
+      libssh-dev \
       patch \
-      postgresql-dev=9.5.13-r0 \
-      readline-dev \
-      sqlite-dev \
-      zlib-dev \
-  # Cleaning up apk cache space
-  && rm -rf /var/cache/apk/*
+      zlib1g-dev \
+  # Cleaning up apt cache space
+  && rm -rf /var/lib/apt/lists/*
+
+
+# Configure PATH environment for pyenv
+ENV PYENV_ROOT /root/.pyenv
+ENV PATH ${PYENV_ROOT}/shims:${PYENV_ROOT}/bin:$PATH
 
 # Install pyenv
-RUN curl -L https://raw.githubusercontent.com/pyenv/pyenv-installer/master/bin/pyenv-installer | sh
-# Configure PATH environment for pyenv
-ENV PATH /root/.pyenv/shims:/root/.pyenv/bin:$PATH
+RUN git clone git://github.com/yyuu/pyenv.git "${PYENV_ROOT}"
 
 # Install all required python versions
 RUN \
@@ -48,3 +52,5 @@ RUN \
 # DEV: `tox==3.7` introduced parallel execution mode
 #      https://tox.readthedocs.io/en/3.7.0/example/basic.html#parallel-mode
 RUN pip install "tox>=3.7,<4.0"
+
+CMD ["/bin/bash"]
