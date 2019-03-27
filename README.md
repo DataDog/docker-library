@@ -36,5 +36,6 @@ Currently available tags:
 * [`memcached_SASL`](https://github.com/DataDog/docker-library/tree/master/memcached)
 * [`nginx-vts`](https://github.com/DataDog/docker-library/tree/master/nginx-vts)
 * [`pgbouncer_1_7`](https://github.com/DataDog/docker-library/tree/master/pgbouncer/1.7)
-* [`pgbouncer_1_8`](https://github.com/DataDog/docker-library/tree/master/pgbouncer/1.7)
+* [`pgbouncer_1_8`](https://github.com/DataDog/docker-library/tree/master/pgbouncer/1.8)
 * [`snmp`](https://github.com/DataDog/docker-library/tree/master/snmp): Image for SNMP testing with [snmpsim](http://snmplabs.com/snmpsim/quickstart.html)
+* [`couch_2_3`](https://github.com/DataDog/docker-library/tree/master/couch/2.3): Couch v2.3.1 with development cluster
