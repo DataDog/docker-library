@@ -35,42 +35,41 @@ RUN apt-get update -y && apt-get install -y --no-install-recommends \
 # see https://github.com/apache/couchdb-docker/pull/28#discussion_r141112407
 ENV GOSU_VERSION 1.10
 ENV TINI_VERSION 0.16.1
-RUN set -ex; \
-  apt-get update; \
-  apt-get install -y --no-install-recommends wget; \
-  rm -rf /var/lib/apt/lists/*; \
-  dpkgArch="$(dpkg --print-architecture | awk -F- '{ print $NF }')"; \
+RUN apt-get update \
+ && apt-get install -y --no-install-recommends wget \
+ && rm -rf /var/lib/apt/lists/* \
+ && dpkgArch="$(dpkg --print-architecture | awk -F- '{ print $NF }')" \
 # install gosu
-  wget -O /usr/local/bin/gosu "https://github.com/tianon/gosu/releases/download/${GOSU_VERSION}/gosu-$dpkgArch"; \
-  wget -O /usr/local/bin/gosu.asc "https://github.com/tianon/gosu/releases/download/$GOSU_VERSION/gosu-$dpkgArch.asc"; \
-  export GNUPGHOME="$(mktemp -d)"; \
-  for server in $(shuf -e ha.pool.sks-keyservers.net \
+ && wget -O /usr/local/bin/gosu "https://github.com/tianon/gosu/releases/download/${GOSU_VERSION}/gosu-$dpkgArch" \
+ && wget -O /usr/local/bin/gosu.asc "https://github.com/tianon/gosu/releases/download/$GOSU_VERSION/gosu-$dpkgArch.asc" \
+ && export GNUPGHOME="$(mktemp -d)" \
+ && for server in $(shuf -e ha.pool.sks-keyservers.net \
                           hkp://p80.pool.sks-keyservers.net:80 \
                           keyserver.ubuntu.com \
                           hkp://keyserver.ubuntu.com:80 \
                           pgp.mit.edu) ; do \
     gpg --batch --keyserver "$server" --recv-keys B42F6819007F00F88E364FD4036A9C25BF357DD4 && break || : ; \
-  done; \
-  gpg --batch --verify /usr/local/bin/gosu.asc /usr/local/bin/gosu; \
-  rm -rf "$GNUPGHOME" /usr/local/bin/gosu.asc; \
-  chmod +x /usr/local/bin/gosu; \
-  gosu nobody true; \
+  done \
+ && gpg --batch --verify /usr/local/bin/gosu.asc /usr/local/bin/gosu \
+ && rm -rf "$GNUPGHOME" /usr/local/bin/gosu.asc \
+ && chmod +x /usr/local/bin/gosu \
+ && gosu nobody true \
 # install tini
-  wget -O /usr/local/bin/tini "https://github.com/krallin/tini/releases/download/v${TINI_VERSION}/tini-$dpkgArch"; \
-  wget -O /usr/local/bin/tini.asc "https://github.com/krallin/tini/releases/download/v${TINI_VERSION}/tini-$dpkgArch.asc"; \
-  export GNUPGHOME="$(mktemp -d)"; \
-  for server in $(shuf -e ha.pool.sks-keyservers.net \
+ && wget -O /usr/local/bin/tini "https://github.com/krallin/tini/releases/download/v${TINI_VERSION}/tini-$dpkgArch" \
+ && wget -O /usr/local/bin/tini.asc "https://github.com/krallin/tini/releases/download/v${TINI_VERSION}/tini-$dpkgArch.asc" \
+ && export GNUPGHOME="$(mktemp -d)" \
+ && for server in $(shuf -e ha.pool.sks-keyservers.net \
                           hkp://p80.pool.sks-keyservers.net:80 \
                           keyserver.ubuntu.com \
                           hkp://keyserver.ubuntu.com:80 \
                           pgp.mit.edu) ; do \
     gpg --batch --keyserver "$server" --recv-keys 595E85A6B1B4779EA4DAAEC70B588DFF0527A9B7 && break || : ; \
-  done; \
-  gpg --batch --verify /usr/local/bin/tini.asc /usr/local/bin/tini; \
-  rm -rf "$GNUPGHOME" /usr/local/bin/tini.asc; \
-  chmod +x /usr/local/bin/tini; \
-  tini --version; \
-  apt-get purge -y --auto-remove wget
+  done \
+ && gpg --batch --verify /usr/local/bin/tini.asc /usr/local/bin/tini \
+ && rm -rf "$GNUPGHOME" /usr/local/bin/tini.asc \
+ && chmod +x /usr/local/bin/tini \
+ && tini --version \
+ && apt-get purge -y --auto-remove wget
 
 RUN apt-get update -y && apt-get install -y --no-install-recommends \
     apt-transport-https \
@@ -81,24 +80,20 @@ RUN apt-get update -y && apt-get install -y --no-install-recommends \
     libcurl4-openssl-dev \
     libicu-dev \
     libmozjs185-dev \
-    python3 \
-    libpython3-dev \
-    python3-pip \
-    python3-sphinx
-
-RUN pip3 install --upgrade \
-    sphinx_rtd_theme \
-    nose \
-    requests \
-    hypothesis
+    python3
 
 # Node is special
-RUN set -ex; \
-    curl -s https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add -; \
-    echo 'deb https://deb.nodesource.com/node_8.x stretch main' > /etc/apt/sources.list.d/nodesource.list; \
-    echo 'deb-src https://deb.nodesource.com/node_8.x stretch main' >> /etc/apt/sources.list.d/nodesource.list; \
-    apt-get update -y && apt-get install -y nodejs; \
-    npm install -g grunt-cli
+RUN curl -s https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add - \
+ && echo 'deb https://deb.nodesource.com/node_8.x stretch main' > /etc/apt/sources.list.d/nodesource.list \
+ && echo 'deb-src https://deb.nodesource.com/node_8.x stretch main' >> /etc/apt/sources.list.d/nodesource.list \
+ && apt-get update -y \
+ && apt-get install -y nodejs \
+ && npm install -g grunt-cli \
+ && apt-get -y autoremove \
+ && apt-get -y clean \
+ && rm -rf /tmp/* \
+ && rm -rf /var/lib/apt/lists/* \
+ && rm -rf /var/tmp/*
 
 ENV COUCHDB_VERSION 2.3.1
 
@@ -114,7 +109,7 @@ RUN cd /usr/src && mkdir couchdb \
 RUN chown -R couchdb:couchdb /usr/src/couchdb
 
 WORKDIR /opt/couchdb
-EXPOSE 5984 15984 25984 35984
+EXPOSE 5984
 VOLUME ["/usr/src/couchdb/dev/lib"]
 
 ENTRYPOINT ["tini", "--", "/usr/src/couchdb/dev/run"]
