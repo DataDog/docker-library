@@ -28,8 +28,12 @@ RUN apt-get update -y && apt-get install -y --no-install-recommends \
     haproxy \
     libicu57 \
     libmozjs185-1.0 \
-    openssl && \
-  rm -rf /var/lib/apt/lists/*
+    openssl \
+ && apt-get -y autoremove \
+ && apt-get -y clean \
+ && rm -rf /tmp/* \
+ && rm -rf /var/lib/apt/lists/* \
+ && rm -rf /var/tmp/*
 
 # grab gosu for easy step-down from root and tini for signal handling
 # see https://github.com/apache/couchdb-docker/pull/28#discussion_r141112407
@@ -69,7 +73,12 @@ RUN apt-get update \
  && rm -rf "$GNUPGHOME" /usr/local/bin/tini.asc \
  && chmod +x /usr/local/bin/tini \
  && tini --version \
- && apt-get purge -y --auto-remove wget
+ && apt-get purge -y --auto-remove wget \
+ && apt-get -y autoremove \
+ && apt-get -y clean \
+ && rm -rf /tmp/* \
+ && rm -rf /var/lib/apt/lists/* \
+ && rm -rf /var/tmp/*
 
 RUN apt-get update -y && apt-get install -y --no-install-recommends \
     apt-transport-https \
@@ -80,7 +89,12 @@ RUN apt-get update -y && apt-get install -y --no-install-recommends \
     libcurl4-openssl-dev \
     libicu-dev \
     libmozjs185-dev \
-    python3
+    python3 \
+ && apt-get -y autoremove \
+ && apt-get -y clean \
+ && rm -rf /tmp/* \
+ && rm -rf /var/lib/apt/lists/* \
+ && rm -rf /var/tmp/*
 
 # Node is special
 RUN curl -s https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add - \
