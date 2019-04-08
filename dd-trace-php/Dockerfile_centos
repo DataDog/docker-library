@@ -2,14 +2,18 @@ ARG CENTOS_VERSION=6
 FROM centos:${CENTOS_VERSION}
 ARG CENTOS_VERSION=6
 ARG CENTOS_MINOR_VERSION=1
-RUN rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-${CENTOS_VERSION}.noarch.rpm \
-  && rpm -Uvh https://rpms.remirepo.net/enterprise/remi-release-${CENTOS_VERSION}.rpm \
-  && rpm -Uvh http://opensource.wandisco.com/centos/${CENTOS_VERSION}/git/x86_64/wandisco-git-release-${CENTOS_VERSION}-${CENTOS_MINOR_VERSION}.noarch.rpm \
-  && yum install -y yum-utils valgrind git \
-  && yum groupinstall -y 'Development Tools' \
-  && yum clean all
+RUN set -xe; \
+  rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-${CENTOS_VERSION}.noarch.rpm; \
+  rpm -Uvh https://rpms.remirepo.net/enterprise/remi-release-${CENTOS_VERSION}.rpm; \
+  rpm -Uvh http://opensource.wandisco.com/centos/${CENTOS_VERSION}/git/x86_64/wandisco-git-release-${CENTOS_VERSION}-${CENTOS_MINOR_VERSION}.noarch.rpm; \
+  yum install -y yum-utils git; \
+  yum -y install centos-release-scl; \
+  yum -y install devtoolset-7; \
+  scl enable devtoolset-7 bash; \
+  echo source scl_source enable devtoolset-7 | tee /etc/profile.d/enable-gcc7.sh 
 ARG PHP_VERSION=54
 RUN yum-config-manager --enable remi-php${PHP_VERSION} \
   && yum install -y php php-cli php-mcrypt php-devel php-xml \
   && yum clean all \
   && curl -q https://raw.githubusercontent.com/composer/getcomposer.org/1b137f8bf6db3e79a38a5bc45324414a6b1f9df2/web/installer | php -- php -- --filename=composer --install-dir=/usr/local/bin
+  
