@@ -1,0 +1,50 @@
+version: '3.6'
+
+x-aliases:
+  bld: &build
+    context: ./
+    dockerfile: Dockerfile_centos 
+
+services:    
+  centos6-5_4:
+    build: { <<: *build, args: { CENTOS_VERSION: 6, PHP_VERSION: 54 } }
+    image: datadog/docker-library:ddtrace_centos_6_php_5_4
+  centos6-5_5:
+    build: { <<: *build, args: { CENTOS_VERSION: 6, PHP_VERSION: 55 } }
+    image: datadog/docker-library:ddtrace_centos_6_php_5_5
+  centos6-5_6:
+    build: { <<: *build, args: { CENTOS_VERSION: 6, PHP_VERSION: 56 } }
+    image: datadog/docker-library:ddtrace_centos_6_php_5_6
+  centos6-7_0:
+    build: { <<: *build, args: { CENTOS_VERSION: 6, PHP_VERSION: 70 } }
+    image: datadog/docker-library:ddtrace_centos_6_php_7_0
+  centos6-7_1:
+    build: { <<: *build, args: { CENTOS_VERSION: 6, PHP_VERSION: 71 } }
+    image: datadog/docker-library:ddtrace_centos_6_php_7_1
+  centos6-7_2:
+    build: { <<: *build, args: { CENTOS_VERSION: 6, PHP_VERSION: 72 } }
+    image: datadog/docker-library:ddtrace_centos_6_php_7_2
+  centos6-7_3:
+    build: { <<: *build, args: { CENTOS_VERSION: 6, PHP_VERSION: 73 } }
+    image: datadog/docker-library:ddtrace_centos_6_php_7_3
+  centos7-5_4:
+    build: { <<: *build, args: { CENTOS_VERSION: 7, PHP_VERSION: 54 } }
+    image: datadog/docker-library:ddtrace_centos_7_php_5_4
+  centos7-5_5:
+    build: { <<: *build, args: { CENTOS_VERSION: 7, PHP_VERSION: 55 } }
+    image: datadog/docker-library:ddtrace_centos_7_php_5_5
+  centos7-5_6:
+    build: { <<: *build, args: { CENTOS_VERSION: 7, PHP_VERSION: 56 } }
+    image: datadog/docker-library:ddtrace_centos_7_php_5_6
+  centos7-7_0:
+    build: { <<: *build, args: { CENTOS_VERSION: 7, PHP_VERSION: 70 } }
+    image: datadog/docker-library:ddtrace_centos_7_php_7_0
+  centos7-7_1:
+    build: { <<: *build, args: { CENTOS_VERSION: 7, PHP_VERSION: 71 } }
+    image: datadog/docker-library:ddtrace_centos_7_php_7_1
+  centos7-7_2:
+    build: { <<: *build, args: { CENTOS_VERSION: 7, PHP_VERSION: 72 } }
+    image: datadog/docker-library:ddtrace_centos_7_php_7_2
+  centos7-7_3:
+    build: { <<: *build, args: { CENTOS_VERSION: 7, PHP_VERSION: 73 } }
+    image: datadog/docker-library:ddtrace_centos_7_php_7_3
