@@ -1,0 +1,26 @@
+version: '3.6'
+
+x-aliases:
+  bld: &build
+    context: ./
+    dockerfile: Dockerfile 
+
+services:    
+  ubuntu16.04-7_2:
+    build: { <<: *build, args: { PHP_VERSION: 7.2 } }
+    image: datadog/docker-library:ddtrace_ubuntu_16_04_php_7_2
+  ubuntu16.04-7_1:
+    build: { <<: *build, args: { PHP_VERSION: 7.1 } }
+    image: datadog/docker-library:ddtrace_ubuntu_16_04_php_7_1
+  ubuntu16.04-7_0:
+    build: { <<: *build, args: { PHP_VERSION: 7.0 } }
+    image: datadog/docker-library:ddtrace_ubuntu_16_04_php_7_0
+  ubuntu16.04-5_6:
+    build: { <<: *build, args: { PHP_VERSION: 5.6 } }
+    image: datadog/docker-library:ddtrace_ubuntu_16_04_php_5_6        
+  # ubuntu16.04-5_5:
+  #   build: { <<: *build, args: { PHP_VERSION: 5.5 } }
+  #   image: datadog/docker-library:ddtrace_ubuntu_16_04_php_5_5
+  # ubuntu16.04-5_4:
+  #   build: { <<: *build, args: { PHP_VERSION: 5.4 } }
+  #   image: datadog/docker-library:ddtrace_ubuntu_16_04_php_5_4    
