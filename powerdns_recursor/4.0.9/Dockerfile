@@ -9,7 +9,7 @@ RUN echo "deb [arch=amd64] http://repo.powerdns.com/ubuntu xenial-rec-40 main" |
     curl https://repo.powerdns.com/FD380FBB-pub.asc | apt-key add -
 
 RUN apt-get update && \
-    apt-get install pdns-recursor=4.0.3-1pdns.xenial -y
+    apt-get install pdns-recursor=4.0.9-1pdns.xenial -y
 
 VOLUME ["/etc/powerdns"]
 ADD recursor.conf /etc/powerdns/recursor.conf
