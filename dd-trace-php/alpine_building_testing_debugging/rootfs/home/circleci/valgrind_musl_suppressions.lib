@@ -8,7 +8,15 @@
    <insert_a_suppression_name_here>
    Memcheck:Cond
    fun:strlcpy
-   obj:/lib/ld-musl-x86_64.so.1
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   obj:*
 }
 {
    <insert_a_suppression_name_here>
