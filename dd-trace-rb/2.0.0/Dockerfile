@@ -60,7 +60,7 @@ RUN DOCKERIZE_URL="https://circle-downloads.s3.amazonaws.com/circleci-images/cac
 
 # Install RubyGems
 RUN gem update --system
-RUN gem install bundler
+RUN gem install bundler -v '1.17.3'
 ENV BUNDLE_SILENCE_ROOT_WARNING 1
 
 RUN mkdir /app
