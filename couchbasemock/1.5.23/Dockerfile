@@ -2,7 +2,7 @@ FROM maven:3.6.1-jdk-8
 
 RUN git clone https://github.com/randomanderson/CouchbaseMock.git --branch bucket-start-port
 WORKDIR CouchbaseMock
-RUN mvn package -DskipTests
+RUN mvn package
 
 EXPOSE 8091
 EXPOSE 11210
