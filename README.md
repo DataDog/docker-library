@@ -41,4 +41,8 @@ Currently available tags:
 * [`pgbouncer_1_8`](https://github.com/DataDog/docker-library/tree/master/pgbouncer/1.8)
 * [`snmp`](https://github.com/DataDog/docker-library/tree/master/snmp): Image for SNMP testing with [snmpsim](http://snmplabs.com/snmpsim/quickstart.html)
 * [`couch_2_3`](https://github.com/DataDog/docker-library/tree/master/couch/2.3): Couch v2.3.1 with development cluster
+* [`ansible_2_4`](https://github.com/DataDog/docker-library/tree/master/ansible/2.4): Ansible v2.4
+* [`ansible_2_5`](https://github.com/DataDog/docker-library/tree/master/ansible/2.5): Ansible v2.5
+* [`ansible_2_6`](https://github.com/DataDog/docker-library/tree/master/ansible/2.6): Ansible v2.6
+* [`ansible_2_7`](https://github.com/DataDog/docker-library/tree/master/ansible/2.7): Ansible v2.7
 * [`ansible_2_8`](https://github.com/DataDog/docker-library/tree/master/ansible/2.8): Ansible v2.8
