@@ -1,4 +1,4 @@
-FROM debian:stable-slim
+FROM debian:oldstable-slim
 
 RUN apt-get update \
     && apt-get install -y curl python gpg procps python-apt \
