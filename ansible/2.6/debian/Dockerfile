@@ -1,7 +1,7 @@
-FROM debian:stable-slim
+FROM debian:oldstable-slim
 
 RUN apt-get update \
-    && apt-get install -y curl python gpg procps \
+    && apt-get install -y curl python gpg procps python-apt \
     && apt-get clean
 
 RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py \
