@@ -6,7 +6,7 @@ ENV DRUID_VERSION=0.15.0-incubating
 # perl needed for running some druid scripts
 RUN apt-get update \
     && apt-get install -y perl \
-    && apt-get clean all
+    && apt-get clean all && rm -rf /var/lib/apt/lists/*
 
 RUN mkdir -p $DRUID_HOME \
     && curl "https://archive.apache.org/dist/incubator/druid/$DRUID_VERSION/apache-druid-$DRUID_VERSION-bin.tar.gz" \
