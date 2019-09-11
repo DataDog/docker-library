@@ -11,11 +11,11 @@ RUN mkdir -p $DRUID_HOME
 RUN curl "https://archive.apache.org/dist/incubator/druid/$DRUID_VERSION/apache-druid-$DRUID_VERSION-bin.tar.gz" \
       | tar zxf - --strip-components 1 -C $DRUID_HOME
 
-WORKDIR $DRUID_HOME
-
 COPY ./conf /opt/druid_conf
 
 COPY docker-entrypoint.sh /
 RUN chmod +x /docker-entrypoint.sh
+
+WORKDIR $DRUID_HOME
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
