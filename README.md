@@ -9,7 +9,7 @@ docker build -t datadog/docker-library:druid_1_5 druid/0.15
 docker push datadog/docker-library:druid_1_5
 ```
 
-Pull command:
+Pull command. Example:
 
 ```shell script
 docker pull datadog/docker-library:druid_1_5
