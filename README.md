@@ -2,17 +2,17 @@
 
 A Dockerfiles compilation for custom images.
 
-The images must be pushed manually to Docker Hub to make them available. Example:
+The images must be pushed manually to Docker Hub to make them available:
 
 ```shell script
-docker build -t datadog/docker-library:druid_1_5 druid/0.15
-docker push datadog/docker-library:druid_1_5
+docker build -t datadog/docker-library:<IMAGE_TAG> <BUILD_DIR>
+docker push datadog/docker-library:<IMAGE_TAG>
 ```
 
-Pull command. Example:
+Pull command:
 
 ```shell script
-docker pull datadog/docker-library:druid_1_5
+docker pull datadog/docker-library:<IMAGE_TAG>
 ```
 
 Currently available tags:
