@@ -2,9 +2,18 @@
 
 A Dockerfiles compilation for custom images.
 
+The images must be pushed manually to Docker Hub to make them available:
+
+```shell script
+docker build -t datadog/docker-library:<IMAGE_TAG> <BUILD_DIR>
+docker push datadog/docker-library:<IMAGE_TAG>
+```
+
 Pull command:
 
-* `docker pull datadog/docker-library`
+```shell script
+docker pull datadog/docker-library:<IMAGE_TAG>
+```
 
 Currently available tags:
 
