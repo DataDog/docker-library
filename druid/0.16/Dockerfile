@@ -1,7 +1,7 @@
 FROM openjdk:8-jre-alpine
 
 ENV DRUID_HOME=/usr/local/druid
-ENV DRUID_VERSION=0.15.0-incubating
+ENV DRUID_VERSION=0.16.0-incubating
 
 RUN apk add --update --no-cache bash
 
