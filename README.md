@@ -39,7 +39,7 @@ Currently available tags:
 * [`ddtrace_rb_2_3_8`](https://github.com/DataDog/docker-library/tree/master/dd-trace-rb/2.3.8): Test runner for Ruby version 2.3.8
 * [`ddtrace_rb_2_4_4`](https://github.com/DataDog/docker-library/tree/master/dd-trace-rb/2.4.4): Test runner for Ruby version 2.4.4
 * [`ddtrace_rb_2_4_6`](https://github.com/DataDog/docker-library/tree/master/dd-trace-rb/2.4.6): Test runner for Ruby version 2.4.6
-* [`druid_0_15`](https://github.com/DataDog/docker-library/tree/master/druid/0.15): Druid v.0.15.0-incubating
+* [`druid_0_16`](https://github.com/DataDog/docker-library/tree/master/druid/0.16): Druid v.0.16.0-incubating
 * [`elasticsearch_0_90`](https://github.com/DataDog/docker-library/tree/master/elasticsearch/0.90): Elasticsearch v.0.90.13
 * [`elasticsearch_1_0`](https://github.com/DataDog/docker-library/tree/master/elasticsearch/1.0): Elasticsearch v.1.0
 * [`elasticsearch_1_1`](https://github.com/DataDog/docker-library/tree/master/elasticsearch/1.1): Elasticsearch v.1.1
