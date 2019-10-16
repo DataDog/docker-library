@@ -41,12 +41,13 @@ RUN git clone git://github.com/yyuu/pyenv.git "${PYENV_ROOT}"
 
 # Install all required python versions
 RUN \
-  pyenv install 2.7.15 \
+  pyenv install 2.7.16 \
   && pyenv install 3.4.9 \
-  && pyenv install 3.5.6 \
-  && pyenv install 3.6.8 \
-  && pyenv install 3.7.2 \
-  && pyenv global 2.7.15 3.4.9 3.5.6 3.6.8 3.7.2 \
+  && pyenv install 3.5.7 \
+  && pyenv install 3.6.9 \
+  && pyenv install 3.7.4 \
+  && pyenv install 3.8-dev \
+  && pyenv global 2.7.16 3.4.9 3.5.7 3.6.9 3.7.4 3.8-dev \
   && pip install --upgrade pip
 
 # Install Python dependencies
