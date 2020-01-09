@@ -22,6 +22,8 @@ Currently available tags:
 * [`ansible_2_6`](https://github.com/DataDog/docker-library/tree/master/ansible/2.6): Ansible v2.6
 * [`ansible_2_7`](https://github.com/DataDog/docker-library/tree/master/ansible/2.7): Ansible v2.7
 * [`ansible_2_8`](https://github.com/DataDog/docker-library/tree/master/ansible/2.8): Ansible v2.8
+* [`chef_kitchen_systemd_centos_6`](https://github.com/DataDog/docker-library/tree/master/chef-kitchen/systemd/centos6): Chef Kitchen image for testing systemd services on Centos 6
+* [`chef_kitchen_systemd_centos_7`](https://github.com/DataDog/docker-library/tree/master/chef-kitchen/systemd/centos7): Chef Kitchen image for testing systemd services on Centos 7
 * [`couch_2_3`](https://github.com/DataDog/docker-library/tree/master/couch/2.3): Couch v2.3.1 with development cluster
 * [`dd_opentracing_cpp_ubuntu_16.04_0_2_1`](https://github.com/DataDog/docker-library/tree/master/dd-opentracing-cpp/ubuntu_16.04/0.2.1): Base image for CircleCI build of C++ OpenTracing integration (Ubuntu 16.04)
 * [`dd_opentracing_cpp_ubuntu_18.04_0_2_1`](https://github.com/DataDog/docker-library/tree/master/dd-opentracing-cpp/ubuntu_18.04/0.2.1): Base image for CircleCI build of C++ OpenTracing integration (Ubuntu 18.04)
@@ -56,3 +58,7 @@ Currently available tags:
 * [`supervisord_3_3_0`](https://github.com/DataDog/docker-library/tree/master/supervisord/3.3.0): Supervisord v.3.3.0
 * [`varnish_4_1_7`](https://github.com/DataDog/docker-library/tree/master/varnish/4.1.7): Varnish v.4.1.7
 * [`varnish_5_0_0`](https://github.com/DataDog/docker-library/tree/master/varnish/5.0.0): Varnish v.5.0.0
+
+Middle stage image:
+
+* [`chef_kitchen_systemd_scripts_0.1`](https://github.com/DataDog/docker-library/tree/master/chef-kitchen/systemd/scripts/0.1): Middlestage image having the scripts necessary for simulating systemd
