@@ -24,6 +24,7 @@ Currently available tags:
 * [`ansible_2_8`](https://github.com/DataDog/docker-library/tree/master/ansible/2.8): Ansible v2.8
 * [`chef_kitchen_systemd_centos_6`](https://github.com/DataDog/docker-library/tree/master/chef-kitchen/systemd/centos6): Chef Kitchen image for testing systemd services on Centos 6
 * [`chef_kitchen_systemd_centos_7`](https://github.com/DataDog/docker-library/tree/master/chef-kitchen/systemd/centos7): Chef Kitchen image for testing systemd services on Centos 7
+* [`chef_kitchen_systemd_centos_8`](https://github.com/DataDog/docker-library/tree/master/chef-kitchen/systemd/centos8): Chef Kitchen image for testing systemd services on Centos 8
 * [`couch_2_3`](https://github.com/DataDog/docker-library/tree/master/couch/2.3): Couch v2.3.1 with development cluster
 * [`dd_opentracing_cpp_ubuntu_16.04_0_2_1`](https://github.com/DataDog/docker-library/tree/master/dd-opentracing-cpp/ubuntu_16.04/0.2.1): Base image for CircleCI build of C++ OpenTracing integration (Ubuntu 16.04)
 * [`dd_opentracing_cpp_ubuntu_18.04_0_2_1`](https://github.com/DataDog/docker-library/tree/master/dd-opentracing-cpp/ubuntu_18.04/0.2.1): Base image for CircleCI build of C++ OpenTracing integration (Ubuntu 18.04)
