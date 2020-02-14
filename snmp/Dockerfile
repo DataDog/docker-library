@@ -1,5 +1,8 @@
 FROM debian:stable-slim
 
+ADD entrypoint.sh /usr/bin/entrypoint.sh
+RUN chmod +x /usr/bin/entrypoint.sh
+
 RUN apt-get update \
     && apt-get install -y curl python gpg procps \
     && apt-get clean
@@ -10,5 +13,6 @@ RUN pip install snmpsim
 RUN groupadd snmpsim && useradd snmpsim -g snmpsim
 
 VOLUME /usr/snmpsim/data
+USER snmpsim
 
-ENTRYPOINT ["snmpsimd.py", "--agent-udpv4-endpoint=0.0.0.0:1161", "--process-user=snmpsim", "--process-group=snmpsim"]
+ENTRYPOINT ["entrypoint.sh", "--agent-udpv4-endpoint=0.0.0.0:1161"]
