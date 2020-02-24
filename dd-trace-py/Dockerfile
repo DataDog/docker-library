@@ -1,14 +1,13 @@
 # Latest image for this Dockerfile: datadog/docker-library:ddtrace_py
 
-# DEV: Use `python:slim` instead of an `alpine` image to support installing wheels from PyPI
+# DEV: Use `debian:slim` instead of an `alpine` image to support installing wheels from PyPI
 #      this drastically improves test execution time since python dependencies don't all
 #      have to be built from source all the time (grpcio takes forever to install)
-FROM python:slim
+FROM debian:stretch-slim
 
 RUN \
   # Install system dependencies
-  echo 'deb http://deb.debian.org/debian stretch main' >> /etc/apt/sources.list \
-  && apt-get update \
+  apt-get update \
   && apt-get install -y --no-install-recommends \
       build-essential \
       ca-certificates \
