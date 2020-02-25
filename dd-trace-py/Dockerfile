@@ -5,6 +5,10 @@
 #      have to be built from source all the time (grpcio takes forever to install)
 FROM debian:stretch-slim
 
+# http://bugs.python.org/issue19846
+# > At the moment, setting "LANG=C" on a Linux system *fundamentally breaks Python 3*, and that's not OK.
+ENV LANG C.UTF-8
+
 RUN \
   # Install system dependencies
   apt-get update \
