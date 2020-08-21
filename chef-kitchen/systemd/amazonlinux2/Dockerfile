@@ -1,6 +1,8 @@
 FROM amazonlinux:2
 LABEL maintainer="julien.lebot@datadoghq.com"
 
+RUN yum install -y openssh-server openssh-clients
+
 # This is using the multistage docker build as described here:
 # https://docs.docker.com/develop/develop-images/multistage-build/
 
