@@ -26,6 +26,8 @@ Currently available tags:
 * [`chef_kitchen_systemd_centos_7`](https://github.com/DataDog/docker-library/tree/master/chef-kitchen/systemd/centos7): Chef Kitchen image for testing systemd services on Centos 7
 * [`chef_kitchen_systemd_centos_8`](https://github.com/DataDog/docker-library/tree/master/chef-kitchen/systemd/centos8): Chef Kitchen image for testing systemd services on Centos 8
 * [`chef_kitchen_systemd_opensuse_leap_15`](https://github.com/DataDog/docker-library/tree/master/chef-kitchen/systemd/opensuse): Chef Kitchen image for testing systemd services on OpenSUSE Leap 15
+* [`chef_kitchen_systemd_amazonlinux_2`](https://github.com/DataDog/docker-library/tree/master/chef-kitchen/systemd/amazonlinux2): Chef Kitchen image for testing systemd services on Amazon Linux 2
+
 * [`couch_2_3`](https://github.com/DataDog/docker-library/tree/master/couch/2.3): Couch v2.3.1 with development cluster
 * [`dd_opentracing_cpp_ubuntu_16.04_0_2_1`](https://github.com/DataDog/docker-library/tree/master/dd-opentracing-cpp/ubuntu_16.04/0.2.1): Base image for CircleCI build of C++ OpenTracing integration (Ubuntu 16.04)
 * [`dd_opentracing_cpp_ubuntu_18.04_0_2_1`](https://github.com/DataDog/docker-library/tree/master/dd-opentracing-cpp/ubuntu_18.04/0.2.1): Base image for CircleCI build of C++ OpenTracing integration (Ubuntu 18.04)
