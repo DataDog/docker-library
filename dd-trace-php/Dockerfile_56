@@ -3,7 +3,9 @@ FROM circleci/php:5.6
 USER root
 
 RUN apt-get update \
-    && apt-get install -y \
+    && apt-get install -y --no-install-recommends \
+        apt-utils \
+        ca-certificates \
         vim \
         libssl-dev \
         libmemcached-dev \

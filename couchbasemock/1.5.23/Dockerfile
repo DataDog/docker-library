@@ -5,7 +5,7 @@ FROM maven:3.6.1-jdk-8-slim
 ENV BUCKET_LIST=${BUCKET_LIST:-default::couchbase}
 
 # Get CouchbaseMock and build it
-RUN apt-get update && apt-get install -y git
+RUN apt-get update && apt-get install -y --no-install-recommends git
 RUN git clone https://github.com/randomanderson/CouchbaseMock.git --branch bucket-start-port
 WORKDIR CouchbaseMock
 RUN mvn package

@@ -1,7 +1,7 @@
 FROM ubuntu:18.04
 
 RUN apt-get update && \
-  apt-get install -y \
+  apt-get install -y --no-install-recommends \
   # Basic circleci utils
   ca-certificates git curl wget tar sudo iproute2 \
   # Integration test tools

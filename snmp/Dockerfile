@@ -4,7 +4,7 @@ ADD entrypoint.sh /usr/bin/entrypoint.sh
 RUN chmod +x /usr/bin/entrypoint.sh
 
 RUN apt-get update \
-    && apt-get install -y curl python gpg procps \
+    && apt-get install -y --no-install-recommends apt-utils ca-certificates curl python gpg procps \
     && apt-get clean
 RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py \
     && python get-pip.py \
