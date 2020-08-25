@@ -5,7 +5,7 @@ COPY program_0.sh /
 COPY program_1.sh /
 COPY program_2.sh /
 
-RUN pip install supervisor==3.3.3 &&chmod a+x /program_*.sh && mkdir supervisor
+RUN pip install --no-cache-dir supervisor==3.3.3 &&chmod a+x /program_*.sh && mkdir supervisor
 
 EXPOSE 19001
 
