@@ -64,6 +64,7 @@ Currently available tags:
 * [`supervisord_3_3_0`](https://github.com/DataDog/docker-library/tree/master/supervisord/3.3.0): Supervisord v.3.3.0
 * [`varnish_4_1_7`](https://github.com/DataDog/docker-library/tree/master/varnish/4.1.7): Varnish v.4.1.7
 * [`varnish_5_0_0`](https://github.com/DataDog/docker-library/tree/master/varnish/5.0.0): Varnish v.5.0.0
+* [`voltdb_10_0`](https://github.com/DataDog/docker-library/tree/master/voltdb/10.0): VoltDB v10.0 (Developer Edition)
 
 Middle stage image:
 
