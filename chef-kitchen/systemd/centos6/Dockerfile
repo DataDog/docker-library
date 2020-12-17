@@ -1,5 +1,10 @@
 FROM centos:6
-MAINTAINER Karim Bogtob <karim.bogtob@datadoghq.com>
+MAINTAINER Agent Platform <team-agent-platform@datadoghq.com>
+
+# Enable the vault (archive) repos, as we are past CentOS6 EOL
+RUN sed -is 's/enabled=0/enabled=1/g' /etc/yum.repos.d/CentOS-Vault.repo && \
+    sed -ie 's/6\.9/6.10/g' /etc/yum.repos.d/CentOS-Vault.repo && \
+    rm /etc/yum.repos.d/CentOS-Base.repo
 
 # Install python building dependencies
 RUN yum -y update && \
