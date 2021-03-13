@@ -24,6 +24,8 @@ RUN export DEBIAN_FRONTEND=noninteractive \
 RUN export DEBIAN_FRONTEND=noninteractive \
     && apt-get update -y \
     && apt-get install -y --no-install-recommends \
+    apt-utils \
+    ca-certificates \
     bash \
     bc \
     coreutils \

@@ -101,7 +101,7 @@ RUN curl -s https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add -
  && echo 'deb https://deb.nodesource.com/node_8.x stretch main' > /etc/apt/sources.list.d/nodesource.list \
  && echo 'deb-src https://deb.nodesource.com/node_8.x stretch main' >> /etc/apt/sources.list.d/nodesource.list \
  && apt-get update -y \
- && apt-get install -y nodejs \
+ && apt-get install -y --no-install-recommends nodejs \
  && npm install -g grunt-cli \
  && apt-get -y autoremove \
  && apt-get -y clean \

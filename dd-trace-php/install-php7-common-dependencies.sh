@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
-apt-get install -y \
+apt-get install -y --no-install-recommends \
+        apt-utils \
+        ca-certificates \
         libmemcached-dev \
         valgrind \
         vim \

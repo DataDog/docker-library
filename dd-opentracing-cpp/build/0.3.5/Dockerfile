@@ -1,7 +1,7 @@
 FROM ubuntu:18.04
 
 RUN apt-get update && \
-  apt-get install -y \
+  apt-get install -y --no-install-recommends \
   # Basic circleci utils
   ca-certificates git curl wget tar sudo \
   # Source tools
@@ -16,4 +16,4 @@ COPY bazel.list /etc/apt/sources.list.d/bazel.list
 RUN wget https://bazel.build/bazel-release.pub.gpg
 RUN apt-key add bazel-release.pub.gpg && \
   apt-get update && \
-  apt-get install -y bazel
+  apt-get install -y --no-install-recommends bazel

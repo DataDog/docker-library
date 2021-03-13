@@ -6,7 +6,7 @@ COPY install-php7-common-dependencies.sh /tmp/install-php7-common-dependencies.s
 
 RUN apt-get update \
     && sh /tmp/install-php7-common-dependencies.sh \
-    && apt-get install -y libmcrypt-dev \
+    && apt-get install -y --no-install-recommends apt-utils ca-certificates libmcrypt-dev \
     && pecl install mcrypt-1.0.0 \
     && docker-php-ext-enable mcrypt \
     && docker-php-ext-install pcntl \
