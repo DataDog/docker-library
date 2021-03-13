@@ -64,7 +64,7 @@ RUN set -ex \
 	&& (docker version || true); \
 # install docker-compose\
 	apk add --no-cache --virtual .persistent-docker-compose python3; \
-	pip3 install docker-compose; \
+	pip install --no-cache-dir docker-compose; \
 	docker-compose --version; \
 # install dockerize\
 	DOCKERIZE_URL="https://circle-downloads.s3.amazonaws.com/circleci-images/cache/linux-amd64/dockerize-latest.tar.gz" \
