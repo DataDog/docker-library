@@ -5,7 +5,7 @@ RUN apt-get update && \
   # Basic circleci utils
   ca-certificates git curl wget tar sudo \
   # Source tools
-  clang-format-6.0 \
+  clang-format-6.0 clang-format-9 \
   # Build tools
   build-essential cmake clang-6.0 \
   # Nginx requirements
