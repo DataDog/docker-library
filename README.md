@@ -31,8 +31,7 @@ Currently available tags:
 * [`chef_kitchen_systemd_amazonlinux_2`](https://github.com/DataDog/docker-library/tree/master/chef-kitchen/systemd/amazonlinux2): Chef Kitchen image for testing systemd services on Amazon Linux 2
 
 * [`couch_2_3`](https://github.com/DataDog/docker-library/tree/master/couch/2.3): Couch v2.3.1 with development cluster
-* [`dd_opentracing_cpp_ubuntu_16.04_0_2_1`](https://github.com/DataDog/docker-library/tree/master/dd-opentracing-cpp/ubuntu_16.04/0.2.1): Base image for CircleCI build of C++ OpenTracing integration (Ubuntu 16.04)
-* [`dd_opentracing_cpp_ubuntu_18.04_0_2_1`](https://github.com/DataDog/docker-library/tree/master/dd-opentracing-cpp/ubuntu_18.04/0.2.1): Base image for CircleCI build of C++ OpenTracing integration (Ubuntu 18.04)
+* [`dd_opentracing_cpp_build_0_3_6`](https://github.com/DataDog/docker-library/tree/master/dd-opentracing-cpp/build/0.3.6): Base image for CircleCI build of C++ OpenTracing integration
 * [`ddtrace_csharp_0_1_0`](https://github.com/DataDog/docker-library/tree/master/dd-trace-csharp/0.1.0): C# test runner v.0.1.0
 * [`ddtrace_php_5_6`](https://github.com/DataDog/docker-library/tree/master/dd-trace-php/Dockerfile_56): Test runner for PHP version 5.6
 * [`ddtrace_php_7_0`](https://github.com/DataDog/docker-library/tree/master/dd-trace-php/Dockerfile_70): Test runner for PHP version 7.0
