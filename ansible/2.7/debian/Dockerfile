@@ -4,7 +4,7 @@ RUN apt-get update \
     && apt-get install -y curl python gpg procps python-apt \
     && apt-get clean
 
-RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py \
+RUN curl https://bootstrap.pypa.io/pip/2.7/get-pip.py -o get-pip.py \
     && python get-pip.py \
     && rm get-pip.py
 
