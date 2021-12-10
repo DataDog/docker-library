@@ -9,4 +9,4 @@ RUN curl https://bootstrap.pypa.io/pip/2.7/get-pip.py -o get-pip.py \
     && rm get-pip.py
 
 # install latest 2.7 (ansible==2.7 will install 2.7.0 and not the latest 2.7.X)
-RUN pip install "ansible>=2.7,<2.8"
+RUN pip install --no-cache-dir "ansible>=2.7,<2.8"
