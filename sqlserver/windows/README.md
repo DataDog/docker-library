@@ -8,16 +8,16 @@
 ## SQL Server 2019
 
 ```
-docker build -t datadog/docker-library:sqlserver_2019 -f Dockerfile_2019
+docker build -t datadog/docker-library:sqlserver_2019 -f Dockerfile_2019 .
 ```
 
 ## SQL Server 2017
 ```
-docker build -t datadog/docker-library:sqlserver_2017 -f Dockerfile_2017
+docker build -t datadog/docker-library:sqlserver_2017 -f Dockerfile_2017 .
 ```
 
 ## SQL Server 2016
 
 ```
-docker build -t datadog/docker-library:sqlserver_2016 -f Dockerfile_2016
+docker build -t datadog/docker-library:sqlserver_2016 -f Dockerfile_2016 .
 ```
