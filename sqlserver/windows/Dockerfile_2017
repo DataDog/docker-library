@@ -1,0 +1,6 @@
+FROM mcr.microsoft.com/windows/servercore:ltsc2019
+
+RUN curl "https://go.microsoft.com/fwlink/?LinkID=853015" -L -o sqlserver-install.exe
+RUN .\sqlserver-install.exe /ACTION="install" /IACCEPTSQLSERVERLICENSETERMS /QUIET /VERBOSE
+
+CMD ping -t localhost > NUL

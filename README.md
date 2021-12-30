@@ -61,6 +61,9 @@ Currently available tags:
 * [`powerdns_recursor_4_0_9`](https://github.com/DataDog/docker-library/tree/master/powerdns\_recursor/4.0.9): Powerdns Recursor v.4.0.9
 * [`snmp`](https://github.com/DataDog/docker-library/tree/master/snmp): Image for SNMP testing with [snmpsim](http://snmplabs.com/snmpsim/quickstart.html)
 * [`supervisord_3_3_0`](https://github.com/DataDog/docker-library/tree/master/supervisord/3.3.0): Supervisord v.3.3.0
+* [`sqlserver_2019`](https://github.com/DataDog/docker-library/tree/master/sqlserver/windows/Dockerfile_2019): Microsoft SQL Server 2019
+* [`sqlserver_2017`](https://github.com/DataDog/docker-library/tree/master/sqlserver/windows/Dockerfile_2017): Microsoft SQL Server 2017
+* [`sqlserver_2016`](https://github.com/DataDog/docker-library/tree/master/sqlserver/windows/Dockerfile_2016): Microsoft SQL Server 2016
 * [`varnish_4_1_7`](https://github.com/DataDog/docker-library/tree/master/varnish/4.1.7): Varnish v.4.1.7
 * [`varnish_5_0_0`](https://github.com/DataDog/docker-library/tree/master/varnish/5.0.0): Varnish v.5.0.0
 * [`voltdb_10_0`](https://github.com/DataDog/docker-library/tree/master/voltdb/10.0): VoltDB v10.0 (Developer Edition)
