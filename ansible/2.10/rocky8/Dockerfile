@@ -1,13 +1,13 @@
-FROM centos:8
+FROM rockylinux:8
 
 RUN yum install -y python3
 
-RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py \
+RUN curl https://bootstrap.pypa.io/pip/3.6/get-pip.py -o get-pip.py \
     && python3 get-pip.py \
     && rm get-pip.py
 
-# install latest 2.8
-RUN pip install "ansible==2.8.*"
+# install latest 2.10
+RUN python3 -m pip install "ansible==2.10.*"
 
 # Use the systemctl shim
 RUN rm -f /usr/bin/systemctl
