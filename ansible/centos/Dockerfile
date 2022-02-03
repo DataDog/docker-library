@@ -1,5 +1,8 @@
 FROM centos:7
 
+ARG ANSIBLE_VERSION
+RUN test -n "$ANSIBLE_VERSION"
+
 RUN yum install -y python3
 
 RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py \
@@ -7,7 +10,7 @@ RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py \
     && rm get-pip.py
 
 # install latest 2.10
-RUN python3 -m pip install "ansible==2.10.*"
+RUN python3 -m pip install "ansible==$ANSIBLE_VERSION.*"
 
 # There's a systemctl binary in the image that doesn't seem to work
 # correctly (it only returns "Failed to get D-Bus connection: Operation not permitted")
