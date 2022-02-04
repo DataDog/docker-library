@@ -3,9 +3,14 @@ FROM centos:7
 ARG ANSIBLE_VERSION
 RUN test -n "$ANSIBLE_VERSION"
 
+# Define to fix pip install error for some ansible versions:
+# https://github.com/pypa/pip/issues/10219#issuecomment-888127061
+ENV LANG en_US.UTF-8
+ENV LC_ALL en_US.UTF-8
+
 RUN yum install -y python3
 
-RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py \
+RUN curl https://bootstrap.pypa.io/pip/3.6/get-pip.py -o get-pip.py \
     && python3 get-pip.py \
     && rm get-pip.py
 
