@@ -6,7 +6,7 @@ RUN test -n "$ANSIBLE_VERSION"
 RUN zypper refresh \
     && zypper install -y curl python3
 
-RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py \
+RUN curl https://bootstrap.pypa.io/pip/3.6/get-pip.py -o get-pip.py \
     && python3 get-pip.py \
     && rm get-pip.py
 
