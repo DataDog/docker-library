@@ -21,3 +21,15 @@ docker build -t datadog/docker-library:sqlserver_2017 -f Dockerfile_2017 .
 ```
 docker build -t datadog/docker-library:sqlserver_2016 -f Dockerfile_2016 .
 ```
+
+## SQL Server 2014
+
+```
+docker build -t datadog/docker-library:sqlserver_2014 -f Dockerfile_2014 .
+```
+
+## SQL Server 2012
+
+```
+docker build -t datadog/docker-library:sqlserver_2012 -f Dockerfile_2012 .
+```
