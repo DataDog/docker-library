@@ -1,0 +1,7 @@
+FROM mcr.microsoft.com/windows/servercore:ltsc2019
+
+RUN curl "https://download.microsoft.com/download/F/6/7/F673709C-D371-4A64-8BF9-C1DD73F60990/ENU/x64/SQLEXPR_x64_ENU.exe" -L -o sqlserver-install.exe
+RUN .\sqlserver-install.exe /Q /x:sqlserver-install
+RUN .\sqlserver-install\SETUP.EXE /ACTION="install" /IACCEPTSQLSERVERLICENSETERMS /QUIET /INDICATEPROGRESS /INSTANCEID=MSSQLSERVER /INSTANCENAME=MSSQLSERVER
+
+CMD ping -t localhost > NUL
