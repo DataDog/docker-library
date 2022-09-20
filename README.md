@@ -24,6 +24,7 @@ Currently available tags:
 * [`ansible_2_8`](https://github.com/DataDog/docker-library/tree/master/ansible/2.8): Ansible v2.8
 * [`ansible_2_9`](https://github.com/DataDog/docker-library/tree/master/ansible/2.9): Ansible v2.9
 * [`ansible_2_10`](https://github.com/DataDog/docker-library/tree/master/ansible/2.10): Ansible v2.10
+* [`cacti-1.2.19`](https://github.com/DataDog/docker-library/tree/master/cacti/1.2.19): Cacti v1.2.19
 * [`chef_kitchen_systemd_centos_6`](https://github.com/DataDog/docker-library/tree/master/chef-kitchen/systemd/centos6): Chef Kitchen image for testing systemd services on Centos 6
 * [`chef_kitchen_systemd_centos_7`](https://github.com/DataDog/docker-library/tree/master/chef-kitchen/systemd/centos7): Chef Kitchen image for testing systemd services on Centos 7
 * [`chef_kitchen_systemd_centos_8`](https://github.com/DataDog/docker-library/tree/master/chef-kitchen/systemd/centos8): Chef Kitchen image for testing systemd services on Centos 8
