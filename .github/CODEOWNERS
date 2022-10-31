@@ -19,4 +19,4 @@
 /sqlserver                          @DataDog/database-monitoring
 
 # Infrastructure integrations
-/snmp                               @DataDog/network-device-monitoring
+/snmp                               @DataDog/Network Device Monitoring
