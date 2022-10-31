@@ -1,0 +1,22 @@
+# See https://help.github.com/articles/about-codeowners/ for syntax
+# Rules are matched bottom-to-top, so one team can own subdirectories
+# and another the rest of the directory.
+
+# Agent integrations
+/cacti                              @DataDog/agent-integrations
+/druid                              @DataDog/agent-integrations
+/ibmmq                              @DataDog/agent-integrations
+/kyototycoon                        @DataDog/agent-integrations
+/memcached                          @DataDog/agent-integrations
+/nginx                              @DataDog/agent-integrations
+/openldap                           @DataDog/agent-integrations
+/pgbouncer                          @DataDog/agent-integrations
+/powerdns_recursor                  @DataDog/agent-integrations
+/varnish                            @DataDog/agent-integrations
+/voltdb                             @DataDog/agent-integrations
+
+# Database monitoring
+/sqlserver                          @DataDog/database-monitoring
+
+# Infrastructure integrations
+/snmp                               @DataDog/network-device-monitoring
