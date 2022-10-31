@@ -5,7 +5,6 @@
 # Agent integrations
 /cacti                              @DataDog/agent-integrations
 /druid                              @DataDog/agent-integrations
-/ibmmq                              @DataDog/agent-integrations
 /kyototycoon                        @DataDog/agent-integrations
 /memcached                          @DataDog/agent-integrations
 /nginx-vts                          @DataDog/agent-integrations
