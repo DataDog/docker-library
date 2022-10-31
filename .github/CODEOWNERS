@@ -12,6 +12,7 @@
 /openldap                           @DataDog/agent-integrations
 /pgbouncer                          @DataDog/agent-integrations
 /powerdns_recursor                  @DataDog/agent-integrations
+/supervisord                        @DataDog/agent-integrations
 /varnish                            @DataDog/agent-integrations
 /voltdb                             @DataDog/agent-integrations
 
