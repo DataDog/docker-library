@@ -8,7 +8,7 @@
 /ibmmq                              @DataDog/agent-integrations
 /kyototycoon                        @DataDog/agent-integrations
 /memcached                          @DataDog/agent-integrations
-/nginx                              @DataDog/agent-integrations
+/nginx-vts                          @DataDog/agent-integrations
 /openldap                           @DataDog/agent-integrations
 /pgbouncer                          @DataDog/agent-integrations
 /powerdns_recursor                  @DataDog/agent-integrations
