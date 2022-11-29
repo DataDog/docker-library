@@ -1,5 +1,5 @@
 FROM centos:8
-MAINTAINER Karim Bogtob <karim.bogtob@datadoghq.com>
+MAINTAINER Agent Platform <team-agent-platform@datadoghq.com>
 
 RUN yum install -y epel-release
 RUN yum search openssh

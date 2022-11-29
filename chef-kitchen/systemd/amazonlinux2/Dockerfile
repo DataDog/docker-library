@@ -1,5 +1,5 @@
 FROM amazonlinux:2
-LABEL maintainer="julien.lebot@datadoghq.com"
+MAINTAINER Agent Platform <team-agent-platform@datadoghq.com>
 
 RUN yum install -y openssh-server openssh-clients
 
