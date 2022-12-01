@@ -1,4 +1,5 @@
 FROM rockylinux:8
+LABEL maintainer="Agent Platform <team-agent-platform@datadoghq.com>"
 
 RUN yum install -y epel-release
 RUN yum install -y openssh-server openssh-clients python2-2.7.*
