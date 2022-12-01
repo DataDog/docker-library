@@ -1,5 +1,5 @@
 FROM centos:7
-MAINTAINER Agent Platform <team-agent-platform@datadoghq.com>
+LABEL maintainer="Agent Platform <team-agent-platform@datadoghq.com>"
 
 RUN yum install -y epel-release
 RUN yum search openssh

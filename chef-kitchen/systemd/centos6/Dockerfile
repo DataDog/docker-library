@@ -1,5 +1,5 @@
 FROM centos:6
-MAINTAINER Agent Platform <team-agent-platform@datadoghq.com>
+LABEL maintainer="Agent Platform <team-agent-platform@datadoghq.com>"
 
 # Enable the vault (archive) repos, as we are past CentOS6 EOL
 RUN sed -is 's/enabled=0/enabled=1/g' /etc/yum.repos.d/CentOS-Vault.repo && \

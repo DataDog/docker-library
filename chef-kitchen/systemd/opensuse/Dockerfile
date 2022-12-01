@@ -1,5 +1,5 @@
 FROM opensuse/leap:15
-MAINTAINER Agent Platform <team-agent-platform@datadoghq.com>
+LABEL maintainer="Agent Platform <team-agent-platform@datadoghq.com>"
 
 RUN zypper install -y \
     openssh \
