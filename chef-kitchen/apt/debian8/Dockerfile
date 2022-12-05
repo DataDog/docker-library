@@ -5,5 +5,3 @@ LABEL maintainer="Agent Platform <team-agent-platform@datadoghq.com>"
 # Use gpgv wrapper that ignores key expiration date but checks package signatures.
 COPY gpgvnoexpkeysig /usr/local/sbin
 RUN echo 'Dir::Bin::gpg "/usr/local/sbin/gpgvnoexpkeysig";' >> /etc/apt/apt.conf.d/20datadog
-
-CMD [ "/root/start.sh" ]
