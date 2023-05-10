@@ -1,5 +1,7 @@
 FROM debian:stretch-slim
 
+RUN printf 'deb http://archive.debian.org/debian stretch main\ndeb http://archive.debian.org/debian-security stretch/updates main' > /etc/apt/sources.list
+
 RUN apt-get update \
     && apt-get install -y curl python gpg procps python-apt \
     && apt-get clean
