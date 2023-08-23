@@ -32,7 +32,6 @@ Currently available tags:
 * [`chef_kitchen_systemd_opensuse_leap_15`](https://github.com/DataDog/docker-library/tree/master/chef-kitchen/systemd/opensuse): Chef Kitchen image for testing systemd services on OpenSUSE Leap 15
 * [`chef_kitchen_systemd_amazonlinux_2`](https://github.com/DataDog/docker-library/tree/master/chef-kitchen/systemd/amazonlinux2): Chef Kitchen image for testing systemd services on Amazon Linux 2
 
-* [`couch_2_3`](https://github.com/DataDog/docker-library/tree/master/couch/2.3): Couch v2.3.1 with development cluster
 * [`dd_opentracing_cpp_build_0_3_8`](https://github.com/DataDog/docker-library/tree/master/dd-opentracing-cpp/build/0.3.8): Base image for CircleCI build of C++ OpenTracing integration
 * [`ddtrace_csharp_0_1_0`](https://github.com/DataDog/docker-library/tree/master/dd-trace-csharp/0.1.0): C# test runner v.0.1.0
 * [`ddtrace_php_5_6`](https://github.com/DataDog/docker-library/tree/master/dd-trace-php/Dockerfile_56): Test runner for PHP version 5.6
