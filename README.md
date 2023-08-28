@@ -52,6 +52,7 @@ Currently available tags:
 * [`elasticsearch_1_0`](https://github.com/DataDog/docker-library/tree/master/elasticsearch/1.0): Elasticsearch v.1.0
 * [`elasticsearch_1_1`](https://github.com/DataDog/docker-library/tree/master/elasticsearch/1.1): Elasticsearch v.1.1
 * [`elasticsearch_1_2`](https://github.com/DataDog/docker-library/tree/master/elasticsearch/1.2): Elasticsearch v.1.2
+* [`install_script_sles_11`](https://github.com/DataDog/docker-library/tree/master/linux-agent-install-script/SLES11): Linux install script to tests SLES 11 (openSUSE 13.2 with bash 3)
 * [`kyototycoon_0_9_56`](https://github.com/DataDog/docker-library/tree/master/kyototycoon/0.9.56): Kyototycoon v.0.9.56
 * [`memcached_SASL`](https://github.com/DataDog/docker-library/tree/master/memcached)
 * [`nginx-vts`](https://github.com/DataDog/docker-library/tree/master/nginx-vts)
