@@ -9,7 +9,8 @@ ENV LANG en_US.UTF-8
 ENV LC_ALL en_US.UTF-8
 
 # Agent < 7.35 doesn't have "Requires(pre): shadow-utils"
-RUN yum install -y python3 shadow-utils
+# We install tar here to be able to use the image in Github Action (checkout requires tar)
+RUN yum install -y python3 shadow-utils tar
 
 RUN curl https://bootstrap.pypa.io/pip/get-pip.py -o get-pip.py \
     && python3 get-pip.py \
