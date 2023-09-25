@@ -4,7 +4,7 @@ ARG ANSIBLE_VERSION
 RUN test -n "$ANSIBLE_VERSION"
 
 RUN apt-get update \
-    && apt-get install -y curl python3 gpg procps python3-apt python3-distutils \
+    && apt-get install -y curl python3 gpg procps python3-apt python3-distutils git openssh-client\
     && apt-get clean
 
 RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py \
