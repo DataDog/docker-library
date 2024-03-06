@@ -63,6 +63,7 @@ Currently available tags:
 * [`powerdns_recursor_4_0_9`](https://github.com/DataDog/docker-library/tree/master/powerdns\_recursor/4.0.9): Powerdns Recursor v.4.0.9
 * [`snmp`](https://github.com/DataDog/docker-library/tree/master/snmp): Image for SNMP testing with [snmpsim](http://snmplabs.com/snmpsim/quickstart.html)
 * [`supervisord_3_3_0`](https://github.com/DataDog/docker-library/tree/master/supervisord/3.3.0): Supervisord v.3.3.0
+* [`sqlserver_2022`](https://github.com/DataDog/docker-library/tree/master/sqlserver/windows/Dockerfile_2022): Microsoft SQL Server 2022
 * [`sqlserver_2019`](https://github.com/DataDog/docker-library/tree/master/sqlserver/windows/Dockerfile_2019): Microsoft SQL Server 2019
 * [`sqlserver_2017`](https://github.com/DataDog/docker-library/tree/master/sqlserver/windows/Dockerfile_2017): Microsoft SQL Server 2017
 * [`sqlserver_2016`](https://github.com/DataDog/docker-library/tree/master/sqlserver/windows/Dockerfile_2016): Microsoft SQL Server 2016
