@@ -1,4 +1,4 @@
-# Oracle 21
+# Oracle 21 Express Edition
 
 ## Build
 
@@ -15,9 +15,12 @@ docker push datadog/docker-library:oracle-21-xe
 ## Run
 
 ```bash
-docker run --name ora21c-test -d -p 1521:1521/tcp docker.io/datadog/docker-library:oracle-21-xe
+docker run --name ora21c-test -d -p 1521:1521/tcp datadog/docker-library:oracle-21-xe
 ```
 
-## Warning
+## Connect
 
-You need licenses to deploy this image to staging and demo environment.
+```bash
+sqlplus c##datadog/datadog@localhost:1521/xe
+```
+
