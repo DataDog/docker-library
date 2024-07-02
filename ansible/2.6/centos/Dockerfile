@@ -1,4 +1,4 @@
-FROM centos:7
+FROM registry.ddbuild.io/images/base:v38221072-2485f17-centos7
 
 RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py \
     && python get-pip.py \

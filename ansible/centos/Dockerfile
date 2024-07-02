@@ -1,4 +1,4 @@
-FROM centos:7
+FROM registry.ddbuild.io/images/base:v38221072-2485f17-centos7
 
 ARG ANSIBLE_VERSION
 RUN test -n "$ANSIBLE_VERSION"
