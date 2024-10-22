@@ -1,7 +1,13 @@
 FROM mcr.microsoft.com/windows/servercore:ltsc2019
 
-RUN curl "https://download.microsoft.com/download/3/9/F/39F968FA-DEBB-4960-8F9E-0E7BB3035959/SQLEXPR_x64_ENU.exe" -L -o sqlserver-install.exe
+RUN curl "https://download.microsoft.com/download/B/E/D/BED73AAC-3C8A-43F5-AF4F-EB4FEA6C8F3A/ENU/x64/sqlncli.msi" -L -o sqlncli.msi
+RUN msiexec /quiet /passive /qn /log sqlncli.log /i sqlncli.msi IACCEPTSQLNCLILICENSETERMS=YES ADDLOCAL=ALL
+
+RUN curl "https://download.microsoft.com/download/9/5/A/95A9616B-7A37-4AF6-BC36-D6EA96C8DAAE/dotNetFx40_Full_x86_x64.exe" -L -o dotNetFx40_Full_x86_x64.exe
+RUN .\dotNetFx40_Full_x86_x64.exe /install /quiet /norestart
+
+RUN curl "https://download.microsoft.com/download/E/A/E/EAE6F7FC-767A-4038-A954-49B8B05D04EB/Express%2064BIT/SQLEXPR_x64_ENU.exe" -L -o sqlserver-install.exe
 RUN .\sqlserver-install.exe /Q /x:sqlserver-install
-RUN .\sqlserver-install\SETUP.EXE /ACTION="install" /IACCEPTSQLSERVERLICENSETERMS /QUIET /INDICATEPROGRESS /INSTANCEID=MSSQLSERVER /INSTANCENAME=MSSQLSERVER
+RUN .\sqlserver-install\SETUP.EXE /ACTION="Install" /IACCEPTSQLSERVERLICENSETERMS /QUIET /INDICATEPROGRESS /INSTANCEID=MSSQLSERVER /INSTANCENAME=MSSQLSERVER
 
 CMD ping -t localhost > NUL

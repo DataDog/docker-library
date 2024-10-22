@@ -1,7 +1,10 @@
 FROM mcr.microsoft.com/windows/servercore:ltsc2019
 
+RUN curl "https://download.microsoft.com/download/B/E/D/BED73AAC-3C8A-43F5-AF4F-EB4FEA6C8F3A/ENU/x64/sqlncli.msi" -L -o sqlncli.msi
+RUN msiexec /quiet /passive /qn /log sqlncli.log /i sqlncli.msi IACCEPTSQLNCLILICENSETERMS=YES ADDLOCAL=ALL
+
 RUN curl "https://download.microsoft.com/download/F/6/7/F673709C-D371-4A64-8BF9-C1DD73F60990/ENU/x64/SQLEXPR_x64_ENU.exe" -L -o sqlserver-install.exe
 RUN .\sqlserver-install.exe /Q /x:sqlserver-install
-RUN .\sqlserver-install\SETUP.EXE /ACTION="install" /IACCEPTSQLSERVERLICENSETERMS /QUIET /INDICATEPROGRESS /INSTANCEID=MSSQLSERVER /INSTANCENAME=MSSQLSERVER
+RUN .\sqlserver-install\SETUP.EXE /ACTION="Install" /IACCEPTSQLSERVERLICENSETERMS /QUIET /INDICATEPROGRESS /INSTANCEID=MSSQLSERVER /INSTANCENAME=MSSQLSERVER
 
 CMD ping -t localhost > NUL
