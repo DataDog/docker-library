@@ -29,8 +29,7 @@ Currently available tags:
 * [`chef_kitchen_systemd_centos_7`](https://github.com/DataDog/docker-library/tree/master/chef-kitchen/systemd/centos7): Chef Kitchen image for testing systemd services on Centos 7
 * [`chef_kitchen_systemd_centos_8`](https://github.com/DataDog/docker-library/tree/master/chef-kitchen/systemd/centos8): Chef Kitchen image for testing systemd services on Centos 8
 * [`chef_kitchen_systemd_centos_9`](https://github.
-  com/DataDog/docker-library/tree/master/chef-kitchen/systemd/centos9): Chef Kitchen image for testing systemd 
-  services on Centos Stream 9
+  com/DataDog/docker-library/tree/master/chef-kitchen/systemd/centos9): Chef Kitchen image for testing systemd services on Centos Stream 9
 * [`chef_kitchen_systemd_opensuse_leap_15`](https://github.com/DataDog/docker-library/tree/master/chef-kitchen/systemd/opensuse): Chef Kitchen image for testing systemd services on OpenSUSE Leap 15
 * [`chef_kitchen_systemd_amazonlinux_2`](https://github.com/DataDog/docker-library/tree/master/chef-kitchen/systemd/amazonlinux2): Chef Kitchen image for testing systemd services on Amazon Linux 2
 
