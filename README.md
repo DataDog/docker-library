@@ -28,10 +28,12 @@ Currently available tags:
 * [`chef_kitchen_systemd_centos_6`](https://github.com/DataDog/docker-library/tree/master/chef-kitchen/systemd/centos6): Chef Kitchen image for testing systemd services on Centos 6
 * [`chef_kitchen_systemd_centos_7`](https://github.com/DataDog/docker-library/tree/master/chef-kitchen/systemd/centos7): Chef Kitchen image for testing systemd services on Centos 7
 * [`chef_kitchen_systemd_centos_8`](https://github.com/DataDog/docker-library/tree/master/chef-kitchen/systemd/centos8): Chef Kitchen image for testing systemd services on Centos 8
-* [`chef_kitchen_systemd_centos_9`](https://github.
-  com/DataDog/docker-library/tree/master/chef-kitchen/systemd/centos9): Chef Kitchen image for testing systemd services on Centos Stream 9
+* [`chef_kitchen_systemd_centos_9`](https://github.com/DataDog/docker-library/tree/master/chef-kitchen/systemd/centos9): Chef Kitchen image for testing systemd services on Centos Stream 9
 * [`chef_kitchen_systemd_opensuse_leap_15`](https://github.com/DataDog/docker-library/tree/master/chef-kitchen/systemd/opensuse): Chef Kitchen image for testing systemd services on OpenSUSE Leap 15
 * [`chef_kitchen_systemd_amazonlinux_2`](https://github.com/DataDog/docker-library/tree/master/chef-kitchen/systemd/amazonlinux2): Chef Kitchen image for testing systemd services on Amazon Linux 2
+* [`chef_kitchen_systemd_rocky_8`](https://github.com/DataDog/docker-library/tree/master/chef-kitchen/systemd/rocky8): Chef Kitchen image for testing systemd services on Rocky Linux 8
+* [`chef_kitchen_systemd_rocky_9`](https://github.com/DataDog/docker-library/tree/master/chef-kitchen/systemd/rocky9)
+  : Chef Kitchen image for testing systemd services on Rocky Linux 9
 
 * [`dd_opentracing_cpp_build_0_3_8`](https://github.com/DataDog/docker-library/tree/master/dd-opentracing-cpp/build/0.3.8): Base image for CircleCI build of C++ OpenTracing integration
 * [`ddtrace_csharp_0_1_0`](https://github.com/DataDog/docker-library/tree/master/dd-trace-csharp/0.1.0): C# test runner v.0.1.0
@@ -75,3 +77,4 @@ Currently available tags:
 Middle stage image:
 
 * [`chef_kitchen_systemd_scripts_0.1`](https://github.com/DataDog/docker-library/tree/master/chef-kitchen/systemd/scripts/0.1): Middlestage image having the scripts necessary for simulating systemd
+* [`chef_kitchen_systemd_scripts_0.2`](https://github.com/DataDog/docker-library/tree/master/chef-kitchen/systemd/scripts/0.2): Middlestage image containing `start.sh`script for starting systemd with `/usr/sbin/init` 
