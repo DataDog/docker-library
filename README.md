@@ -77,3 +77,4 @@ Currently available tags:
 Middle stage image:
 
 * [`chef_kitchen_systemd_scripts_0.1`](https://github.com/DataDog/docker-library/tree/master/chef-kitchen/systemd/scripts/0.1): Middlestage image having the scripts necessary for simulating systemd
+* [`chef_kitchen_systemd_scripts_0.2`](https://github.com/DataDog/docker-library/tree/master/chef-kitchen/systemd/scripts/0.2): Middlestage image containing `start.sh`script for starting systemd with `/usr/sbin/init` 
