@@ -6,8 +6,6 @@ LABEL maintainer="Agent Onboarding <team-agentonboarding@datadoghq.com>"
 
 ENV container=docker
 
-COPY start.sh /root/start.sh
-
 # see https://hub.docker.com/_/rockylinux
 # RockyLinux:9 missing /usr/sbin/init -> ../lib/systemd/systemd
 #  see https://github.com/rocky-linux/sig-cloud-instance-images/issues/39
@@ -29,5 +27,7 @@ RUN cd /lib/systemd/system/sysinit.target.wants/ && \
     rm -f /lib/systemd/system/anaconda.target.wants/*
 
 VOLUME [ "/sys/fs/cgroup" ]
+
+COPY --from=datadog/docker-library:chef_kitchen_systemd_scripts_0.2 /root/start.sh /root/start.sh
 
 CMD ["/root/start.sh"]

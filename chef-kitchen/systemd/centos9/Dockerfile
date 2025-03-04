@@ -6,8 +6,6 @@ LABEL maintainer="Agent Onboarding <team-agentonboarding@datadoghq.com>"
 
 ENV container=docker
 
-COPY start.sh /root/start.sh
-
 RUN yum -y update \
     && yum -y install \
     epel-release \
@@ -34,5 +32,7 @@ RUN (cd /lib/systemd/system/sysinit.target.wants/; for i in *; do [ $i == \
 STOPSIGNAL SIGRTMIN+3
 
 VOLUME ["/sys/fs/cgroup"]
+
+COPY --from=datadog/docker-library:chef_kitchen_systemd_scripts_0.2 /root/start.sh /root/start.sh
 
 CMD ["/root/start.sh"]
