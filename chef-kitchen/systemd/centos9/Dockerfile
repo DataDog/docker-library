@@ -2,6 +2,7 @@
 # Minimal systemd-enabled CentOS Stream 9 image
 
 FROM quay.io/centos/centos:stream9
+LABEL maintainer="Agent Onboarding <team-agentonboarding@datadoghq.com>"
 
 ENV container=docker
 
