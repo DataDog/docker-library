@@ -1,0 +1,26 @@
+FROM ubuntu:18.04
+
+# Set non-interactive mode for apt-get
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Define environment variables (default values)
+ENV ACCEPT_EULA=Y
+ENV MSSQL_SA_PASSWORD=""
+ENV MSSQL_PID=Developer
+
+# Install dependencies and Microsoft SQL Server repository
+RUN apt-get update && apt-get install -y \
+    curl \
+    software-properties-common \
+    apt-transport-https \
+    && curl -fsSL https://packages.microsoft.com/keys/microsoft.asc | apt-key add - \
+    && add-apt-repository "$(curl -fsSL https://packages.microsoft.com/config/ubuntu/18.04/mssql-server-2017.list)" \
+    && apt-get update \
+    && apt-get install -y mssql-server \
+    && apt-get clean
+
+# Expose the default SQL Server port
+EXPOSE 1433
+
+# Start SQL Server
+CMD ["/opt/mssql/bin/sqlservr"]
