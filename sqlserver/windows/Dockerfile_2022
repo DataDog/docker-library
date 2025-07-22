@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/windows/servercore:ltsc2019
+FROM mcr.microsoft.com/windows/servercore:ltsc2022
 
 RUN curl "https://go.microsoft.com/fwlink/?LinkID=2215158" -L -o sqlserver-install.exe
 RUN .\sqlserver-install.exe /ACTION="install" /IACCEPTSQLSERVERLICENSETERMS /QUIET /VERBOSE
