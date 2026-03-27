@@ -5,6 +5,12 @@
 
 # Versions
 
+## SQL Server 2025
+
+```
+docker build -t datadog/docker-library:sqlserver_2025 -f Dockerfile_2025 .
+```
+
 ## SQL Server 2022
 
 ```
